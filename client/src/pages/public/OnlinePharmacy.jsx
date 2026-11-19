@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/cartSlice';
 import { showToast } from '../../store/uiSlice';
+import useTranslation from '../../hooks/useTranslation';
 import API from '../../services/api';
 import { Pill, Search, ShoppingCart, ShieldAlert, CheckCircle2, Star } from 'lucide-react';
 
@@ -13,6 +14,7 @@ export default function OnlinePharmacy() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,10 +44,10 @@ export default function OnlinePharmacy() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Banner */}
       <div className="bg-[#123B5D] text-white p-8 rounded-3xl space-y-3">
-        <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">Doorstep Delivery</span>
-        <h1 className="text-3xl font-extrabold text-white">CareVanta Digital Pharmacy</h1>
+        <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">{t('pharmacyBadge')}</span>
+        <h1 className="text-3xl font-extrabold text-white">{t('pharmacyTitle')}</h1>
         <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
-          Order 100% genuine medications, OTC wellness products, and medical devices with licensed pharmacist prescription verification.
+          {t('heroSubtitle')}
         </p>
       </div>
 
@@ -57,7 +59,7 @@ export default function OnlinePharmacy() {
             selectedCategory === 'All' ? 'bg-[#18A999] text-white' : 'bg-white text-slate-600 border border-slate-200'
           }`}
         >
-          All Products
+          {t('viewAll')}
         </button>
         {categories.map((c) => (
           <button
@@ -86,7 +88,7 @@ export default function OnlinePharmacy() {
                 <div>
                   {med.prescriptionRequired && (
                     <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">
-                      Prescription Required (Rx)
+                      {t('rxRequired')}
                     </span>
                   )}
                   <h3 className="font-bold text-sm text-[#123B5D] mt-1 line-clamp-1">{med.name}</h3>
@@ -107,7 +109,7 @@ export default function OnlinePharmacy() {
                   }}
                   className="px-3 py-1.5 bg-[#18A999] hover:bg-[#128275] text-white text-xs font-semibold rounded-xl flex items-center gap-1 shadow-sm transition-colors"
                 >
-                  <ShoppingCart className="w-3.5 h-3.5" /> Add
+                  <ShoppingCart className="w-3.5 h-3.5" /> {t('addToCart')}
                 </button>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
+import useTranslation from '../../hooks/useTranslation';
 import API from '../../services/api';
 import { Stethoscope, Star, MapPin, Search, Filter, Calendar, Award, CheckCircle2, ChevronRight, X } from 'lucide-react';
 
@@ -8,11 +9,11 @@ export default function FindDoctors() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [specialty, setSpecialty] = useState(searchParams.get('specialization') || 'All');
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
   const [bookingDoctor, setBookingDoctor] = useState(null);
   const [bookingDate, setBookingDate] = useState('');
   const [bookingSlot, setBookingSlot] = useState('10:00 AM');
   const [bookingSuccess, setBookingSuccess] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchDoctors();
@@ -48,16 +49,22 @@ export default function FindDoctors() {
     }
   };
 
-  const specialtiesList = ['All', 'Cardiologist', 'Neurologist', 'General Physician', 'Pediatrician', 'Dermatologist', 'Orthopedic'];
+  const specialtiesList = [
+    { key: 'All', label: t('viewAll') },
+    { key: 'Cardiologist', label: t('cardiology') },
+    { key: 'Neurologist', label: t('neurology') },
+    { key: 'General Physician', label: t('generalMedicine') },
+    { key: 'Pediatrician', label: t('pediatrics') }
+  ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Header banner */}
       <div className="bg-[#123B5D] text-white p-8 rounded-3xl space-y-3">
-        <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">Direct Consultations</span>
-        <h1 className="text-3xl font-extrabold text-white">Find & Book Verified Doctors</h1>
+        <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">{t('featuredDoctorsBadge')}</span>
+        <h1 className="text-3xl font-extrabold text-white">{t('findDoctors')}</h1>
         <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
-          Consult board-certified doctors online via secure HD video or schedule in-person clinic appointments.
+          {t('heroSubtitle')}
         </p>
       </div>
 
@@ -66,15 +73,15 @@ export default function FindDoctors() {
         <div className="flex flex-wrap items-center gap-2">
           {specialtiesList.map((s) => (
             <button
-              key={s}
-              onClick={() => setSpecialty(s)}
+              key={s.key}
+              onClick={() => setSpecialty(s.key)}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-                specialty === s 
+                specialty === s.key 
                   ? 'bg-[#18A999] text-white shadow-sm' 
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
-              {s}
+              {s.label}
             </button>
           ))}
         </div>
@@ -108,7 +115,7 @@ export default function FindDoctors() {
                     <p className="text-[11px] text-slate-400">{doc.qualifications?.join(', ')}</p>
                     <div className="flex items-center gap-1 text-amber-500 font-bold text-xs mt-1">
                       <Star className="w-3.5 h-3.5 fill-amber-500" /> {doc.rating || 4.9}
-                      <span className="text-slate-400 font-normal">({doc.totalReviews || 180} reviews)</span>
+                      <span className="text-slate-400 font-normal">({doc.totalReviews || 180})</span>
                     </div>
                   </div>
                 </div>
@@ -117,16 +124,16 @@ export default function FindDoctors() {
 
                 <div className="bg-slate-50 p-3 rounded-xl text-xs space-y-1 border border-slate-100">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Experience:</span>
+                    <span className="text-slate-500">{t('experience')}</span>
                     <span className="font-semibold text-slate-700">{doc.experienceYears || 10}+ Years</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Consultation Fee:</span>
+                    <span className="text-slate-500">{t('consultationFee')}</span>
                     <span className="font-bold text-[#123B5D]">Rs. {doc.consultationFee}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Languages:</span>
-                    <span className="font-medium text-slate-700">{doc.languages?.join(', ') || 'English, Hindi'}</span>
+                    <span className="text-slate-500">{t('languages')}</span>
+                    <span className="font-medium text-slate-700">{doc.languages?.join(', ') || 'English, Hindi, Marathi'}</span>
                   </div>
                 </div>
               </div>
@@ -138,7 +145,7 @@ export default function FindDoctors() {
                 }}
                 className="w-full py-2.5 bg-[#123B5D] hover:bg-[#18A999] text-white text-xs font-semibold rounded-xl text-center transition-colors"
               >
-                Book Appointment Slot
+                {t('bookSlotBtn')}
               </button>
             </div>
           ))}
@@ -161,19 +168,16 @@ export default function FindDoctors() {
                 <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold text-[#123B5D]">Appointment Scheduled!</h3>
+                <h3 className="text-xl font-bold text-[#123B5D]">Appointment Confirmed!</h3>
                 <p className="text-xs text-slate-500">
-                  Your appointment #{bookingSuccess.appointmentNumber} with Dr. {bookingDoctor.user?.firstName} has been confirmed for {bookingSuccess.timeSlot}.
+                  Your appointment #{bookingSuccess.appointmentNumber} with Dr. {bookingDoctor.user?.firstName} has been booked.
                 </p>
-                <div className="p-3 bg-slate-50 rounded-xl text-xs font-mono text-slate-700">
-                  Video Room ID: {bookingSuccess.meetingRoomId}
-                </div>
                 <div className="pt-2">
                   <Link
                     to="/patient/appointments"
                     className="px-6 py-2.5 bg-[#18A999] text-white text-xs font-semibold rounded-xl inline-block"
                   >
-                    Go to My Appointments
+                    {t('myAppointments')}
                   </Link>
                 </div>
               </div>
@@ -181,9 +185,9 @@ export default function FindDoctors() {
               <form onSubmit={handleBook} className="space-y-4">
                 <div>
                   <h3 className="text-lg font-bold text-[#123B5D]">
-                    Schedule Consultation with Dr. {bookingDoctor.user?.firstName} {bookingDoctor.user?.lastName}
+                    {t('bookSlotBtn')}: Dr. {bookingDoctor.user?.firstName} {bookingDoctor.user?.lastName}
                   </h3>
-                  <p className="text-xs text-slate-400">{bookingDoctor.specialization} • Fee: Rs. {bookingDoctor.consultationFee}</p>
+                  <p className="text-xs text-slate-400">{bookingDoctor.specialization} • Rs. {bookingDoctor.consultationFee}</p>
                 </div>
 
                 <div className="space-y-2">
@@ -198,7 +202,7 @@ export default function FindDoctors() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-slate-700">Choose Available Time Slot</label>
+                  <label className="text-xs font-semibold text-slate-700">Choose Slot</label>
                   <select
                     value={bookingSlot}
                     onChange={(e) => setBookingSlot(e.target.value)}
@@ -212,16 +216,11 @@ export default function FindDoctors() {
                   </select>
                 </div>
 
-                <div className="p-3 bg-[#E8F7F3] rounded-xl text-xs text-[#123B5D] flex items-center justify-between">
-                  <span>Consultation Total:</span>
-                  <span className="font-bold text-base">Rs. {bookingDoctor.consultationFee}</span>
-                </div>
-
                 <button
                   type="submit"
                   className="w-full py-3 bg-[#18A999] hover:bg-[#128275] text-white text-xs font-semibold rounded-xl shadow-md transition-colors"
                 >
-                  Confirm & Reserve Appointment
+                  {t('bookNow')}
                 </button>
               </form>
             )}

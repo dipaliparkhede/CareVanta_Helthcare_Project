@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLanguage } from '../../store/uiSlice';
+import useTranslation from '../../hooks/useTranslation';
 import API from '../../services/api';
 import {
   Sparkles, Stethoscope, FileText, Camera, Send,
@@ -6,8 +9,9 @@ import {
 } from 'lucide-react';
 
 export default function AIHealthAssistant() {
-  const [activeTab, setActiveTab] = useState('symptoms'); // 'symptoms', 'chat', 'analyzer', 'ocr'
-  const [language, setLanguage] = useState('en');
+  const [activeTab, setActiveTab] = useState('symptoms');
+  const { t, language } = useTranslation();
+  const dispatch = useDispatch();
 
   // Symptoms state
   const [symptomInput, setSymptomInput] = useState('');
@@ -21,7 +25,11 @@ export default function AIHealthAssistant() {
   const [messages, setMessages] = useState([
     {
       sender: 'ai',
-      text: 'Hello, I am CareVanta AI, your digital health intelligence assistant. How can I assist you with clinical explanations or medical wellness questions today?'
+      text: language === 'mr'
+        ? 'नमस्कार! मी केअरवांता एआय, तुमचा डिजिटल आरोग्य बुद्धिमत्ता सहाय्यक आहे. आज मी तुम्हाला क्लिनिकल व्याख्या किंवा वैद्यकीय प्रश्नांमध्ये कशी मदत करू शकतो?'
+        : (language === 'hi' 
+            ? 'नमस्ते! मैं केयरवांता एआई, आपका डिजिटल स्वास्थ्य सहायक हूँ। आज मैं आपकी क्लिनिकल व्याख्या या स्वास्थ्य प्रश्नों में कैसे सहायता कर सकता हूँ?'
+            : 'Hello, I am CareVanta AI, your digital health intelligence assistant. How can I assist you with clinical explanations or medical wellness questions today?')
     }
   ]);
   const [loadingChat, setLoadingChat] = useState(false);
@@ -114,9 +122,9 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#18A999]/20 text-[#E8F7F3] text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5 text-[#18A999]" /> Multilingual Medical AI
           </div>
-          <h1 className="text-3xl font-extrabold text-white">CareVanta AI Health Suite</h1>
+          <h1 className="text-3xl font-extrabold text-white">{t('aiSuiteTitle')}</h1>
           <p className="text-xs sm:text-sm text-slate-300">
-            Intelligent symptom guidance, clinical terminology explanations, report analysis, and prescription OCR.
+            {t('aiSuiteSubtitle')}
           </p>
         </div>
 
@@ -126,7 +134,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
           <span className="font-semibold text-white">Language:</span>
           <select
             value={language}
-            onChange={(e) => setLanguage(e.target.value)}
+            onChange={(e) => dispatch(setLanguage(e.target.value))}
             className="bg-transparent text-white font-bold focus:outline-none cursor-pointer"
           >
             <option value="en" className="text-slate-900">English</option>
@@ -144,7 +152,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
             activeTab === 'symptoms' ? 'border-[#18A999] text-[#18A999]' : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
-          <Stethoscope className="w-4 h-4" /> Symptom Guidance
+          <Stethoscope className="w-4 h-4" /> {t('symptomTab')}
         </button>
         <button
           onClick={() => setActiveTab('chat')}
@@ -152,7 +160,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
             activeTab === 'chat' ? 'border-[#18A999] text-[#18A999]' : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
-          <Bot className="w-4 h-4" /> Health Q&A Assistant
+          <Bot className="w-4 h-4" /> {t('chatTab')}
         </button>
         <button
           onClick={() => setActiveTab('analyzer')}
@@ -160,7 +168,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
             activeTab === 'analyzer' ? 'border-[#18A999] text-[#18A999]' : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
-          <FileText className="w-4 h-4" /> Medical Report Analyzer
+          <FileText className="w-4 h-4" /> {t('reportAnalyzerTab')}
         </button>
         <button
           onClick={() => setActiveTab('ocr')}
@@ -168,7 +176,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
             activeTab === 'ocr' ? 'border-[#18A999] text-[#18A999]' : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
-          <Camera className="w-4 h-4" /> Prescription OCR
+          <Camera className="w-4 h-4" /> {t('ocrTab')}
         </button>
       </div>
 
@@ -178,21 +186,21 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
           <form onSubmit={handleCheckSymptoms} className="space-y-4">
             <div>
               <label className="text-xs font-bold text-[#123B5D] uppercase tracking-wider block mb-1">
-                Describe Your Current Symptoms
+                {t('describeSymptoms')}
               </label>
               <textarea
                 rows={3}
                 required
                 value={symptomInput}
                 onChange={(e) => setSymptomInput(e.target.value)}
-                placeholder="e.g. Mild headache, dry cough, slight fever for 2 days..."
+                placeholder={t('symptomsPlaceholder')}
                 className="w-full p-4 rounded-2xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#18A999]"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-semibold text-slate-700 block mb-1">Age</label>
+                <label className="text-xs font-semibold text-slate-700 block mb-1">{t('age')}</label>
                 <input
                   type="number"
                   value={symptomAge}
@@ -201,15 +209,15 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-slate-700 block mb-1">Gender</label>
+                <label className="text-xs font-semibold text-slate-700 block mb-1">{t('gender')}</label>
                 <select
                   value={symptomGender}
                   onChange={(e) => setSymptomGender(e.target.value)}
                   className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none"
                 >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
+                  <option value="Male">{t('male')}</option>
+                  <option value="Female">{t('female')}</option>
+                  <option value="Other">{t('other')}</option>
                 </select>
               </div>
             </div>
@@ -219,14 +227,14 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
               disabled={loadingSymptoms}
               className="px-6 py-3 bg-[#18A999] hover:bg-[#128275] text-white font-semibold text-xs rounded-xl shadow-md transition-colors"
             >
-              {loadingSymptoms ? 'Analyzing Clinical Biomarkers...' : 'Analyze Symptoms'}
+              {loadingSymptoms ? t('evaluatingText') : t('analyzeSymptomsBtn')}
             </button>
           </form>
 
           {symptomResult && (
             <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-4 animate-fade-in">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Clinical Evaluation</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">{t('clinicalEvaluation')}</span>
                 <span className={`text-xs font-bold px-3 py-1 rounded-full ${
                   symptomResult.triageLevel === 'EMERGENCY' ? 'bg-red-100 text-red-800' : 'bg-emerald-100 text-emerald-800'
                 }`}>
@@ -242,13 +250,22 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
               )}
 
               <div className="space-y-1">
-                <h4 className="text-sm font-bold text-[#123B5D]">Recommended Specialist</h4>
-                <p className="text-xs text-[#18A999] font-bold">{symptomResult.recommendedSpecialist}</p>
+                <h4 className="text-sm font-bold text-[#123B5D]">{t('recommendedSpecialist')}</h4>
+                <p className="text-xs text-[#18A999] font-bold">
+                  {symptomResult.localizedContent?.specialist || symptomResult.recommendedSpecialist}
+                </p>
               </div>
+
+              {symptomResult.localizedContent?.summary && (
+                <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs text-slate-700">
+                  <p className="font-semibold">{symptomResult.localizedContent.summary}</p>
+                  <p className="text-[#18A999] mt-1">{symptomResult.localizedContent.advice}</p>
+                </div>
+              )}
 
               {symptomResult.selfCareTips && (
                 <div className="space-y-1 text-xs">
-                  <h4 className="font-bold text-slate-700">Self-Care Suggestions:</h4>
+                  <h4 className="font-bold text-slate-700">{t('selfCareSuggestions')}</h4>
                   <ul className="list-disc list-inside space-y-1 text-slate-600">
                     {symptomResult.selfCareTips.map((tip, idx) => (
                       <li key={idx}>{tip}</li>
@@ -270,7 +287,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
         <div className="bg-white rounded-3xl border border-slate-200 card-shadow flex flex-col h-[520px]">
           <div className="p-4 border-b border-slate-100 flex items-center gap-2">
             <Bot className="w-5 h-5 text-[#18A999]" />
-            <h3 className="font-bold text-sm text-[#123B5D]">CareVanta Medical Q&A Session</h3>
+            <h3 className="font-bold text-xs text-[#123B5D]">CareVanta Medical Q&A Session</h3>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
@@ -316,8 +333,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
       {activeTab === 'analyzer' && (
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 card-shadow space-y-6">
           <div className="space-y-2">
-            <h3 className="text-base font-bold text-[#123B5D]">Enter Report Biomarkers or Paste Clinical Findings</h3>
-            <p className="text-xs text-slate-500">The analyzer extracts out-of-range indicators and provides simple clinical terminology explanations.</p>
+            <h3 className="text-base font-bold text-[#123B5D]">{t('reportInputPrompt')}</h3>
             <textarea
               rows={4}
               value={reportText}
@@ -331,16 +347,18 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
             disabled={loadingAnalysis}
             className="px-6 py-2.5 bg-[#18A999] text-white font-semibold text-xs rounded-xl shadow-md"
           >
-            {loadingAnalysis ? 'Evaluating...' : 'Analyze Report Findings'}
+            {loadingAnalysis ? t('evaluatingText') : t('analyzeReportBtn')}
           </button>
 
           {analysisResult && (
             <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
-              <h4 className="font-bold text-sm text-[#123B5D]">Clinical Summary</h4>
+              <h4 className="font-bold text-sm text-[#123B5D]">{t('clinicalSummary')}</h4>
               <p className="text-xs text-slate-700 font-medium">{analysisResult.summary}</p>
 
               <div className="space-y-3 pt-2">
-                <h5 className="text-xs font-bold uppercase tracking-wider text-slate-500">Abnormal Biomarkers Detected ({analysisResult.abnormalBiomarkersCount})</h5>
+                <h5 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  {t('abnormalBiomarkers')} ({analysisResult.abnormalBiomarkersCount})
+                </h5>
                 {analysisResult.abnormalParameters?.map((param, idx) => (
                   <div key={idx} className="p-3 bg-white rounded-xl border border-red-100 flex items-start justify-between text-xs">
                     <div>

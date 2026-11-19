@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
+import useTranslation from '../hooks/useTranslation';
 import Toast from '../components/common/Toast';
 import {
   Heart, LayoutDashboard, Calendar, Video, Pill, ShoppingBag,
@@ -13,6 +14,7 @@ import {
 export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,20 +26,19 @@ export default function DashboardLayout() {
 
   const role = user?.role || 'patient';
 
-  // Navigation Menus for each Role
   const patientLinks = [
-    { name: 'Dashboard', path: '/patient/dashboard', icon: LayoutDashboard },
-    { name: 'My Appointments', path: '/patient/appointments', icon: Calendar },
-    { name: 'Video Consultations', path: '/patient/video-consultation', icon: Video },
-    { name: 'My Prescriptions', path: '/patient/prescriptions', icon: FileText },
-    { name: 'My Medical Reports', path: '/patient/reports', icon: FolderHeart },
-    { name: 'Medical Locker', path: '/patient/documents', icon: Lock },
-    { name: 'Pharmacy Orders', path: '/patient/orders', icon: ShoppingBag },
-    { name: 'Lab Test Bookings', path: '/patient/lab-bookings', icon: FlaskConical },
-    { name: 'AI Health Assistant', path: '/ai-assistant', icon: Sparkles, highlight: true },
-    { name: 'Family Health', path: '/patient/family', icon: Users },
-    { name: 'Medicine Reminders', path: '/patient/reminders', icon: Clock },
-    { name: 'Settings & Profile', path: '/patient/settings', icon: Settings }
+    { name: t('dashboard'), path: '/patient/dashboard', icon: LayoutDashboard },
+    { name: t('myAppointments'), path: '/patient/appointments', icon: Calendar },
+    { name: t('videoConsultations'), path: '/patient/video-consultation', icon: Video },
+    { name: t('myPrescriptions'), path: '/patient/prescriptions', icon: FileText },
+    { name: t('myReports'), path: '/patient/reports', icon: FolderHeart },
+    { name: t('medicalLocker'), path: '/patient/documents', icon: Lock },
+    { name: t('myOrders'), path: '/patient/orders', icon: ShoppingBag },
+    { name: t('labTests'), path: '/patient/lab-bookings', icon: FlaskConical },
+    { name: t('aiAssistant'), path: '/ai-assistant', icon: Sparkles, highlight: true },
+    { name: t('familyHealth'), path: '/patient/family', icon: Users },
+    { name: t('medReminders'), path: '/patient/reminders', icon: Clock },
+    { name: t('settings'), path: '/patient/settings', icon: Settings }
   ];
 
   const doctorLinks = [
@@ -87,7 +88,6 @@ export default function DashboardLayout() {
 
   return (
     <div className="flex h-screen bg-[#F5F8FC] overflow-hidden">
-      {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
           onClick={() => setSidebarOpen(false)}
@@ -99,7 +99,6 @@ export default function DashboardLayout() {
       <aside className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#123B5D] text-white flex flex-col transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
-        {/* Brand */}
         <div className="h-18 px-6 flex items-center justify-between border-b border-slate-700/60 py-4">
           <Link to="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#18A999] to-[#247BA0] flex items-center justify-center">
@@ -109,8 +108,8 @@ export default function DashboardLayout() {
               <span className="text-xl font-bold tracking-tight text-white">
                 Care<span className="text-[#18A999]">Vanta</span>
               </span>
-              <span className="block text-[9px] text-[#E8F7F3] font-semibold tracking-wider">
-                {role.toUpperCase().replace('_', ' ')} PORTAL
+              <span className="block text-[9px] text-[#E8F7F3] font-semibold tracking-wider uppercase">
+                {role.replace('_', ' ')} {t('workspace')}
               </span>
             </div>
           </Link>
@@ -119,10 +118,9 @@ export default function DashboardLayout() {
           </button>
         </div>
 
-        {/* Navigation list */}
         <div className="flex-1 overflow-y-auto px-4 py-5 space-y-1">
           <div className="text-[11px] font-semibold tracking-wider text-slate-400 uppercase px-3 mb-2">
-            Workspace
+            {t('workspace')}
           </div>
           {currentLinks.map((item) => {
             const Icon = item.icon;
@@ -152,7 +150,6 @@ export default function DashboardLayout() {
           })}
         </div>
 
-        {/* User Card & Logout Footer */}
         <div className="p-4 border-t border-slate-700/60 bg-slate-900/40">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5 min-w-0">
@@ -167,7 +164,7 @@ export default function DashboardLayout() {
             <button
               onClick={handleLogout}
               className="p-1.5 text-slate-400 hover:text-red-400 rounded-lg hover:bg-white/5"
-              title="Log Out"
+              title={t('logout')}
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -175,9 +172,7 @@ export default function DashboardLayout() {
         </div>
       </aside>
 
-      {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Top Header */}
         <header className="h-16 bg-white border-b border-slate-200 px-4 sm:px-8 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
             <button
@@ -196,18 +191,17 @@ export default function DashboardLayout() {
               to="/ai-assistant"
               className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#E8F7F3] text-[#18A999] border border-[#18A999]/30 text-xs font-semibold hover:bg-[#18A999] hover:text-white transition-colors"
             >
-              <Sparkles className="w-3.5 h-3.5" /> AI Health Assistant
+              <Sparkles className="w-3.5 h-3.5" /> {t('aiAssistant')}
             </Link>
             <Link
               to="/"
               className="text-xs text-slate-500 hover:text-[#18A999] font-medium hidden md:inline"
             >
-              Back to Public Portal
+              {t('backToPublic')}
             </Link>
           </div>
         </header>
 
-        {/* Dashboard Content Container */}
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <Outlet />
         </main>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import useTranslation from '../../hooks/useTranslation';
 import API from '../../services/api';
 import { FlaskConical, Clock, CheckCircle2, Home, ShieldCheck } from 'lucide-react';
 
 export default function LabTests() {
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     API.get('/lab-tests').then(res => {
@@ -16,10 +18,10 @@ export default function LabTests() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <div className="bg-[#123B5D] text-white p-8 rounded-3xl space-y-3">
-        <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">NABL Accredited</span>
-        <h1 className="text-3xl font-extrabold text-white">Diagnostic Pathology Lab Tests</h1>
+        <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">{t('labBadge')}</span>
+        <h1 className="text-3xl font-extrabold text-white">{t('labTitle')}</h1>
         <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
-          Book certified pathology blood tests and diagnostic scans with hassle-free home sample collection.
+          {t('heroSubtitle')}
         </p>
       </div>
 
@@ -32,15 +34,15 @@ export default function LabTests() {
                   {test.category || 'Diagnostics'}
                 </span>
                 <span className="text-xs text-slate-400 flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5" /> {test.tatHours || 24}h Turnaround
+                  <Clock className="w-3.5 h-3.5" /> {test.tatHours || 24} {t('turnaroundTime')}
                 </span>
               </div>
               <h3 className="font-bold text-base text-[#123B5D]">{test.name}</h3>
               <p className="text-xs text-slate-500 leading-relaxed">{test.description}</p>
               
               <div className="bg-slate-50 p-3 rounded-xl space-y-1 text-xs">
-                <p className="text-slate-600 font-medium">Sample: <span className="text-slate-800 font-semibold">{test.sampleType || 'Blood'}</span></p>
-                <p className="text-slate-600 font-medium">Fasting: <span className="text-slate-800 font-semibold">{test.fastingRequired ? 'Required (8-10 hrs)' : 'Not Required'}</span></p>
+                <p className="text-slate-600 font-medium">{t('sampleType')} <span className="text-slate-800 font-semibold">{test.sampleType || 'Blood'}</span></p>
+                <p className="text-slate-600 font-medium">{t('fasting')} <span className="text-slate-800 font-semibold">{test.fastingRequired ? 'Required (8-10 hrs)' : 'Not Required'}</span></p>
               </div>
             </div>
 
@@ -50,10 +52,10 @@ export default function LabTests() {
                 <span className="text-xs text-slate-400 line-through ml-1.5">Rs. {test.mrp}</span>
               </div>
               <button
-                onClick={() => alert(`Test "${test.name}" requested for booking. Please log in to complete home collection address.`)}
+                onClick={() => alert(`Test "${test.name}" booked for home collection.`)}
                 className="px-4 py-2 bg-[#18A999] hover:bg-[#128275] text-white text-xs font-semibold rounded-xl shadow-sm transition-colors"
               >
-                Book Home Pickup
+                {t('bookHomePickup')}
               </button>
             </div>
           </div>

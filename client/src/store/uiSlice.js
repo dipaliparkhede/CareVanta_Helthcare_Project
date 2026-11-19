@@ -1,15 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialLang = localStorage.getItem('carevanta_lang') || 'en';
+
 const uiSlice = createSlice({
   name: 'ui',
   initialState: {
-    language: 'en', // 'en', 'hi', 'mr'
-    toast: null, // { type: 'success' | 'error' | 'info', message: string }
+    language: initialLang, // 'en', 'hi', 'mr'
+    toast: null,
     activeModal: null
   },
   reducers: {
     setLanguage: (state, action) => {
       state.language = action.payload;
+      localStorage.setItem('carevanta_lang', action.payload);
     },
     showToast: (state, action) => {
       state.toast = action.payload;

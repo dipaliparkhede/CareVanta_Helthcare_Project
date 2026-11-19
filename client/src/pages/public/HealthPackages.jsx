@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import useTranslation from '../../hooks/useTranslation';
 import API from '../../services/api';
 import { Activity, CheckCircle2, ShieldCheck, Heart, Sparkles } from 'lucide-react';
 
 export default function HealthPackages() {
   const [packages, setPackages] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     API.get('/health-packages').then(res => setPackages(res.data.items || [])).catch(() => {});
@@ -12,10 +14,10 @@ export default function HealthPackages() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <div className="bg-[#123B5D] text-white p-8 rounded-3xl space-y-3">
-        <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">Preventive Care</span>
-        <h1 className="text-3xl font-extrabold text-white">Full Body Preventative Health Packages</h1>
+        <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">{t('packagesBadge')}</span>
+        <h1 className="text-3xl font-extrabold text-white">{t('packagesTitle')}</h1>
         <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
-          Comprehensive master health checkups covering vital organ profiles, cardiovascular risk markers, and included doctor teleconsultations.
+          {t('heroSubtitle')}
         </p>
       </div>
 
@@ -25,7 +27,7 @@ export default function HealthPackages() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold bg-[#E8F7F3] text-[#18A999] px-3 py-1 rounded-full">
-                  {pkg.totalTestsCount || 85}+ Biomarker Parameters
+                  {pkg.totalTestsCount || 85}+ {t('biomarkerParams')}
                 </span>
                 <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">
                   {pkg.discountPercent || 50}% OFF
@@ -35,12 +37,12 @@ export default function HealthPackages() {
               <p className="text-xs text-slate-600 leading-relaxed">{pkg.description}</p>
               
               <div className="space-y-2 pt-2">
-                <h4 className="text-xs font-bold text-[#123B5D] uppercase tracking-wider">Key Inclusions</h4>
+                <h4 className="text-xs font-bold text-[#123B5D] uppercase tracking-wider">{t('keyInclusions')}</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
-                  {pkg.includedTests?.map((t, idx) => (
+                  {pkg.includedTests?.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#18A999] shrink-0" />
-                      <span>{t}</span>
+                      <span>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -53,10 +55,10 @@ export default function HealthPackages() {
                 <span className="text-sm text-slate-400 line-through ml-2">Rs. {pkg.mrp}</span>
               </div>
               <button
-                onClick={() => alert(`Package "${pkg.name}" reserved. Proceed to checkout.`)}
+                onClick={() => alert(`Package "${pkg.name}" reserved.`)}
                 className="px-6 py-3 bg-[#18A999] hover:bg-[#128275] text-white font-semibold text-xs rounded-xl shadow-md transition-colors"
               >
-                Book Health Package
+                {t('bookPackageBtn')}
               </button>
             </div>
           </div>

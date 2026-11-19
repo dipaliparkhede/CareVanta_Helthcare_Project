@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTranslation from '../../hooks/useTranslation';
 import { Heart, ShieldCheck, Lock, Award, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-[#123B5D] text-slate-300 pt-16 pb-10 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,7 +21,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-slate-300 max-w-sm leading-relaxed">
-              CareVanta AI is an advanced, interconnected digital healthcare ecosystem uniting Patients, Doctors, Hospitals, Pharmacies, and Laboratories into an intelligent, patient-centric continuum of care.
+              {t('footerMission')}
             </p>
             <div className="flex items-center gap-3 pt-2">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-white">
@@ -35,31 +38,31 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h4 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">Healthcare Services</h4>
+            <h4 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">{t('quickLinks')}</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link to="/doctors" className="hover:text-white transition-colors">Find Verified Doctors</Link></li>
-              <li><Link to="/pharmacy" className="hover:text-white transition-colors">Online Digital Pharmacy</Link></li>
-              <li><Link to="/lab-tests" className="hover:text-white transition-colors">Diagnostic Pathology Tests</Link></li>
-              <li><Link to="/packages" className="hover:text-white transition-colors">Preventative Health Packages</Link></li>
-              <li><Link to="/ai-assistant" className="hover:text-white transition-colors">AI Health Symptom Triage</Link></li>
+              <li><Link to="/doctors" className="hover:text-white transition-colors">{t('findDoctors')}</Link></li>
+              <li><Link to="/pharmacy" className="hover:text-white transition-colors">{t('pharmacy')}</Link></li>
+              <li><Link to="/lab-tests" className="hover:text-white transition-colors">{t('labTests')}</Link></li>
+              <li><Link to="/packages" className="hover:text-white transition-colors">{t('healthPackages')}</Link></li>
+              <li><Link to="/ai-assistant" className="hover:text-white transition-colors">{t('aiAssistant')}</Link></li>
             </ul>
           </div>
 
           {/* For Providers */}
           <div>
-            <h4 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">Partner Portals</h4>
+            <h4 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">{t('partnerPortals')}</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link to="/register?role=doctor" className="hover:text-white transition-colors">Join as a Doctor</Link></li>
-              <li><Link to="/register?role=hospital_admin" className="hover:text-white transition-colors">Hospital Onboarding</Link></li>
+              <li><Link to="/register?role=doctor" className="hover:text-white transition-colors">Doctor Onboarding</Link></li>
+              <li><Link to="/register?role=hospital_admin" className="hover:text-white transition-colors">Hospital Network</Link></li>
               <li><Link to="/register?role=pharmacist" className="hover:text-white transition-colors">Pharmacy Network</Link></li>
               <li><Link to="/register?role=lab_admin" className="hover:text-white transition-colors">Diagnostic Laboratory</Link></li>
-              <li><Link to="/verify-report/sample" className="hover:text-white transition-colors">Verify Medical Report</Link></li>
+              <li><Link to="/verify-report/sample" className="hover:text-white transition-colors">{t('launchVerifier')}</Link></li>
             </ul>
           </div>
 
           {/* Contact & Support */}
           <div>
-            <h4 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">Emergency & Contact</h4>
+            <h4 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">{t('contactSupport')}</h4>
             <div className="space-y-3 text-sm">
               <p className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#18A999] shrink-0 mt-0.5" />
@@ -82,11 +85,11 @@ export default function Footer() {
 
         {/* Bottom copyright & disclaimers */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <p>© {new Date().getFullYear()} CareVanta AI Technologies Private Limited. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {t('allRightsReserved')}</p>
           <div className="flex items-center space-x-6">
-            <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-white">Terms of Clinical Service</Link>
-            <Link to="/disclaimer" className="hover:text-white">Medical AI Disclaimer</Link>
+            <Link to="/privacy" className="hover:text-white">{t('privacyPolicy')}</Link>
+            <Link to="/terms" className="hover:text-white">{t('termsOfService')}</Link>
+            <Link to="/disclaimer" className="hover:text-white">{t('medicalDisclaimer')}</Link>
           </div>
         </div>
       </div>

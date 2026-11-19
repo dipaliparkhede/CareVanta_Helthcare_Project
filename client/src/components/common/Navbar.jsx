@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/authSlice';
 import { setLanguage } from '../../store/uiSlice';
+import useTranslation from '../../hooks/useTranslation';
 import { 
   Heart, Activity, Stethoscope, Pill, FlaskConical, 
   Sparkles, ShoppingCart, User, LogOut, Menu, X, Globe,
@@ -13,7 +14,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const { items } = useSelector((state) => state.cart);
-  const { language } = useSelector((state) => state.ui);
+  const { t, language } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,11 +25,11 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { name: 'Find Doctors', path: '/doctors', icon: Stethoscope },
-    { name: 'Pharmacy', path: '/pharmacy', icon: Pill },
-    { name: 'Lab Tests', path: '/lab-tests', icon: FlaskConical },
-    { name: 'Health Packages', path: '/packages', icon: Activity },
-    { name: 'AI Assistant', path: '/ai-assistant', icon: Sparkles, badge: 'AI' }
+    { name: t('findDoctors'), path: '/doctors', icon: Stethoscope },
+    { name: t('pharmacy'), path: '/pharmacy', icon: Pill },
+    { name: t('labTests'), path: '/lab-tests', icon: FlaskConical },
+    { name: t('healthPackages'), path: '/packages', icon: Activity },
+    { name: t('aiAssistant'), path: '/ai-assistant', icon: Sparkles, badge: 'AI' }
   ];
 
   const getDashboardPath = () => {
@@ -49,25 +50,25 @@ export default function Navbar() {
       <div className="bg-[#123B5D] text-white text-xs py-1.5 px-4 sm:px-8 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <span className="inline-flex items-center gap-1 font-medium bg-[#18A999]/20 text-[#E8F7F3] px-2 py-0.5 rounded text-[11px]">
-            <ShieldCheck className="w-3 h-3 text-[#18A999]" /> ABDM & ISO 27001 Compliant
+            <ShieldCheck className="w-3 h-3 text-[#18A999]" /> {t('abdmCompliant')}
           </span>
-          <span className="hidden md:inline text-slate-300">National Digital Health Network</span>
+          <span className="hidden md:inline text-slate-300">{t('nationalNetwork')}</span>
         </div>
         <div className="flex items-center space-x-4">
           <a href="tel:112" className="flex items-center gap-1 text-[#E8F7F3] hover:text-white font-semibold">
-            <PhoneCall className="w-3 h-3 text-red-400 animate-pulse" /> 24x7 Emergency: 112
+            <PhoneCall className="w-3 h-3 text-red-400 animate-pulse" /> {t('emergencyHelpline')}
           </a>
           <div className="flex items-center gap-1 border-l border-slate-700 pl-3">
-            <Globe className="w-3 h-3 text-slate-300" />
+            <Globe className="w-3.5 h-3.5 text-[#18A999]" />
             <select
               value={language}
               onChange={(e) => dispatch(setLanguage(e.target.value))}
               aria-label="Select Language"
-              className="bg-transparent text-white text-xs cursor-pointer focus:outline-none"
+              className="bg-transparent text-white text-xs font-bold cursor-pointer focus:outline-none"
             >
-              <option value="en" className="text-slate-900">English</option>
-              <option value="hi" className="text-slate-900">हिंदी</option>
-              <option value="mr" className="text-slate-900">मराठी</option>
+              <option value="en" className="text-slate-900 font-medium">English</option>
+              <option value="hi" className="text-slate-900 font-medium">हिंदी (Hindi)</option>
+              <option value="mr" className="text-slate-900 font-medium">मराठी (Marathi)</option>
             </select>
           </div>
         </div>
@@ -85,7 +86,7 @@ export default function Navbar() {
               Care<span className="text-[#18A999]">Vanta</span>
               <span className="ml-1 text-xs px-1.5 py-0.5 rounded font-semibold bg-[#E8F7F3] text-[#18A999] border border-[#18A999]/30">AI</span>
             </span>
-            <p className="text-[10px] text-slate-400 font-medium tracking-wide leading-none">INTELLIGENT HEALTHCARE</p>
+            <p className="text-[10px] text-slate-400 font-medium tracking-wide leading-none">{t('intelligentHealthcare')}</p>
           </div>
         </Link>
 
@@ -122,7 +123,7 @@ export default function Navbar() {
           <Link
             to="/pharmacy/cart"
             className="relative p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:text-[#18A999] hover:border-[#18A999] transition-colors"
-            title="View Shopping Cart"
+            title={t('cart')}
           >
             <ShoppingCart className="w-5 h-5" />
             {items.length > 0 && (
@@ -140,7 +141,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#123B5D] text-white font-medium text-sm hover:bg-[#0c273e] shadow-sm transition-all"
               >
                 <User className="w-4 h-4 text-[#18A999]" />
-                <span>{user?.firstName || 'Dashboard'}</span>
+                <span>{user?.firstName || t('dashboard')}</span>
                 <span className="text-[10px] bg-[#18A999] text-white px-1.5 py-0.5 rounded font-semibold capitalize">
                   {user?.role?.replace('_', ' ')}
                 </span>
@@ -148,7 +149,7 @@ export default function Navbar() {
               <button
                 onClick={handleLogout}
                 className="p-2 text-slate-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors"
-                title="Log Out"
+                title={t('logout')}
               >
                 <LogOut className="w-4 h-4" />
               </button>
@@ -159,13 +160,13 @@ export default function Navbar() {
                 to="/login"
                 className="px-4 py-2 text-sm font-semibold text-[#123B5D] hover:text-[#18A999] transition-colors"
               >
-                Log In
+                {t('logIn')}
               </Link>
               <Link
                 to="/register"
                 className="px-4 py-2 text-sm font-semibold rounded-xl bg-gradient-to-r from-[#18A999] to-[#247BA0] text-white hover:opacity-95 shadow-md shadow-[#18A999]/20 transition-all"
               >
-                Get Started
+                {t('register')}
               </Link>
             </div>
           )}
@@ -215,13 +216,13 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full text-center py-2.5 bg-[#123B5D] text-white rounded-xl text-sm font-semibold"
                 >
-                  Go to {user?.role} Dashboard
+                  {t('dashboard')} ({user?.role})
                 </Link>
                 <button
                   onClick={handleLogout}
                   className="w-full text-center py-2 text-red-600 text-sm font-medium"
                 >
-                  Log Out
+                  {t('logout')}
                 </button>
               </>
             ) : (
@@ -231,14 +232,14 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-center py-2.5 border border-slate-300 rounded-xl text-sm font-semibold text-slate-700"
                 >
-                  Log In
+                  {t('logIn')}
                 </Link>
                 <Link
                   to="/register"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-center py-2.5 bg-[#18A999] text-white rounded-xl text-sm font-semibold"
                 >
-                  Register
+                  {t('register')}
                 </Link>
               </div>
             )}
