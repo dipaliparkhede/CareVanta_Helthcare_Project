@@ -1,0 +1,415 @@
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../store/cartSlice';
+import { showToast } from '../../store/uiSlice';
+import API from '../../services/api';
+import {
+  Stethoscope, Pill, FlaskConical, Activity, Sparkles,
+  ShieldCheck, Search, Star, Clock, CheckCircle2, ArrowRight,
+  PhoneCall, Heart, Award, Users, FileCheck, Building2, ChevronRight
+} from 'lucide-react';
+
+export default function Home() {
+  const [doctors, setDoctors] = useState([]);
+  const [medicines, setMedicines] = useState([]);
+  const [labTests, setLabTests] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchType, setSearchType] = useState('doctor');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch initial featured data
+    API.get('/doctors?limit=3').then(res => setDoctors(res.data.data || [])).catch(() => {});
+    API.get('/medicines?limit=4').then(res => setMedicines(res.data.data || [])).catch(() => {});
+    API.get('/lab-tests').then(res => setLabTests(res.data.tests?.slice(0, 3) || [])).catch(() => {});
+  }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchType === 'doctor') {
+      navigate(`/doctors?search=${encodeURIComponent(searchQuery)}`);
+    } else if (searchType === 'medicine') {
+      navigate(`/pharmacy?search=${encodeURIComponent(searchQuery)}`);
+    } else {
+      navigate(`/lab-tests?search=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
+  const specializations = [
+    { name: 'Cardiology', icon: Heart, count: '14 Specialists', desc: 'Heart care, hypertension & ECG' },
+    { name: 'Neurology', icon: Activity, count: '8 Specialists', desc: 'Brain, nerves & migraine relief' },
+    { name: 'General Medicine', icon: Stethoscope, count: '28 Specialists', desc: 'Fevers, infections & primary health' },
+    { name: 'Pediatrics', icon: Users, count: '12 Specialists', desc: 'Child healthcare & vaccinations' },
+    { name: 'Diagnostics', icon: FlaskConical, count: '45+ Tests', desc: 'Blood, pathology & scans' },
+    { name: 'Pharmacy', icon: Pill, count: '2,500+ Medicines', desc: 'Doorstep delivery with Rx verification' }
+  ];
+
+  return (
+    <div className="space-y-20 pb-16">
+      {/* 1. Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#E8F7F3]/70 via-[#F5F8FC] to-white pt-12 pb-20 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Heading, Subheading, Search */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#18A999]/30 text-xs font-semibold text-[#18A999] shadow-sm">
+                <Sparkles className="w-4 h-4 text-[#18A999]" />
+                Next-Gen AI Healthcare Ecosystem
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#123B5D] tracking-tight leading-tight">
+                Your Health, <span className="text-[#18A999]">Connected.</span><br />
+                Your Care, <span className="text-[#247BA0]">Intelligent.</span>
+              </h1>
+              <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                Connect seamlessly with verified doctors, accredited diagnostic labs, digital pharmacies, and hospital networks. Powered by clinical AI triaging and cryptographic medical records.
+              </p>
+
+              {/* Universal Search Bar */}
+              <div className="bg-white p-2.5 rounded-2xl shadow-xl border border-slate-200/80 max-w-2xl mx-auto lg:mx-0">
+                <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2">
+                  <select
+                    value={searchType}
+                    onChange={(e) => setSearchType(e.target.value)}
+                    aria-label="Filter service type"
+                    className="bg-slate-50 border border-slate-200 text-xs font-semibold text-[#123B5D] px-3 py-3 rounded-xl focus:outline-none"
+                  >
+                    <option value="doctor">Doctors</option>
+                    <option value="medicine">Medicines</option>
+                    <option value="lab">Lab Tests</option>
+                  </select>
+                  <div className="relative flex-1">
+                    <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder={searchType === 'doctor' ? "Search by doctor name or specialty (e.g. Cardiologist)..." : (searchType === 'medicine' ? "Search medicine name or composition (e.g. Paracetamol)..." : "Search lab test (e.g. CBC, Lipid Profile)...")}
+                      className="w-full pl-11 pr-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="px-6 py-3 bg-[#18A999] hover:bg-[#128275] text-white font-semibold text-sm rounded-xl shadow-md transition-colors flex items-center justify-center gap-1.5"
+                  >
+                    Search
+                  </button>
+                </form>
+              </div>
+
+              {/* Quick Action Badges */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 text-xs text-slate-500 font-medium">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#18A999]" /> Verified Practitioners
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#18A999]" /> Instant Video Consults
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#18A999]" /> QR-Verified PDF Reports
+                </span>
+              </div>
+            </div>
+
+            {/* Right Column: Interactive Ecosystem Card */}
+            <div className="lg:col-span-5 relative">
+              <div className="bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 space-y-6 relative z-10">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#E8F7F3] flex items-center justify-center text-[#18A999]">
+                      <Sparkles className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-[#123B5D] text-sm">CareVanta AI Health Assistant</h3>
+                      <p className="text-[11px] text-slate-400">Clinical Triaging & Terminology Helper</p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full">
+                    Active
+                  </span>
+                </div>
+
+                <div className="bg-slate-50 p-4 rounded-2xl text-xs space-y-2 border border-slate-100">
+                  <p className="font-semibold text-slate-700">"What symptoms are you experiencing today?"</p>
+                  <p className="text-slate-500">I can guide you to the right clinical specialist, help explain abnormal blood biomarker values, or answer general medical questions in English, Hindi, or Marathi.</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <Link
+                    to="/ai-assistant"
+                    className="p-3 bg-[#E8F7F3] text-[#18A999] hover:bg-[#18A999] hover:text-white rounded-xl text-center font-semibold text-xs transition-colors flex items-center justify-center gap-1"
+                  >
+                    Check Symptoms <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <Link
+                    to="/doctors"
+                    className="p-3 bg-[#123B5D] text-white hover:bg-[#0c273e] rounded-xl text-center font-semibold text-xs transition-colors flex items-center justify-center gap-1"
+                  >
+                    Book Doctor <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+
+                {/* 24x7 Emergency Help Pill */}
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2 text-red-700 font-semibold">
+                    <PhoneCall className="w-4 h-4 text-red-600 animate-pulse" />
+                    <span>Emergency Ambulance Trauma</span>
+                  </div>
+                  <a href="tel:112" className="px-2.5 py-1 bg-red-600 text-white rounded font-bold hover:bg-red-700">
+                    Call 112
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Popular Clinical Specializations */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
+          <div>
+            <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">Clinical Specialties</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#123B5D]">Consult by Medical Department</h2>
+          </div>
+          <Link to="/doctors" className="text-sm font-semibold text-[#18A999] hover:text-[#128275] flex items-center gap-1">
+            View All Specialties <ChevronRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {specializations.map((spec) => {
+            const Icon = spec.icon;
+            return (
+              <Link
+                key={spec.name}
+                to={`/doctors?specialization=${encodeURIComponent(spec.name)}`}
+                className="bg-white p-6 rounded-2xl border border-slate-100 card-shadow card-hover flex items-start gap-4 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#E8F7F3] text-[#18A999] flex items-center justify-center shrink-0 group-hover:bg-[#18A999] group-hover:text-white transition-colors">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#123B5D] group-hover:text-[#18A999] transition-colors">{spec.name}</h3>
+                  <p className="text-xs text-slate-500 mt-1">{spec.desc}</p>
+                  <span className="inline-block mt-2 text-[11px] font-semibold text-[#247BA0]">{spec.count}</span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 3. Featured Verified Doctors */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
+          <div>
+            <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">Verified Specialists</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#123B5D]">Book Top-Rated Doctors</h2>
+          </div>
+          <Link to="/doctors" className="text-sm font-semibold text-[#18A999] hover:text-[#128275] flex items-center gap-1">
+            See All Doctors <ChevronRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {doctors.map((doc) => (
+            <div key={doc._id} className="bg-white rounded-2xl border border-slate-100 card-shadow overflow-hidden flex flex-col justify-between">
+              <div className="p-6 space-y-4">
+                <div className="flex items-center gap-4">
+                  <img
+                    src={doc.user?.avatar || 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400'}
+                    alt={doc.user?.firstName}
+                    className="w-16 h-16 rounded-2xl object-cover border-2 border-[#18A999]"
+                  />
+                  <div>
+                    <h3 className="font-bold text-[#123B5D] text-base">Dr. {doc.user?.firstName} {doc.user?.lastName}</h3>
+                    <p className="text-xs font-medium text-[#18A999]">{doc.specialization}</p>
+                    <p className="text-[11px] text-slate-400">{doc.qualifications?.join(', ') || 'MBBS, MD'}</p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-600 line-clamp-2">{doc.bio}</p>
+
+                <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
+                  <div className="flex items-center gap-1 text-amber-500 font-bold">
+                    <Star className="w-3.5 h-3.5 fill-amber-500" /> {doc.rating || 4.9} ({doc.totalReviews || 120})
+                  </div>
+                  <div className="font-bold text-[#123B5D]">
+                    Rs. {doc.consultationFee} <span className="text-[10px] text-slate-400 font-normal">/ consult</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 bg-slate-50 border-t border-slate-100">
+                <Link
+                  to={`/doctors?book=${doc._id}`}
+                  className="w-full py-2.5 bg-[#123B5D] hover:bg-[#18A999] text-white text-xs font-semibold rounded-xl text-center block transition-colors"
+                >
+                  Book Consultation Slot
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. Online Pharmacy Specials */}
+      <section className="bg-white py-16 border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
+            <div>
+              <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">Online Pharmacy</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#123B5D]">Genuine Medicines & Wellness Products</h2>
+            </div>
+            <Link to="/pharmacy" className="text-sm font-semibold text-[#18A999] hover:text-[#128275] flex items-center gap-1">
+              Explore Pharmacy Store <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {medicines.map((med) => (
+              <div key={med._id} className="bg-[#F5F8FC] rounded-2xl p-5 border border-slate-200/60 card-hover flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="h-36 rounded-xl overflow-hidden bg-white flex items-center justify-center p-2">
+                    <img src={med.image} alt={med.name} className="h-full object-contain" />
+                  </div>
+                  <div>
+                    {med.prescriptionRequired && (
+                      <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">Rx Required</span>
+                    )}
+                    <h3 className="font-bold text-sm text-[#123B5D] mt-1 line-clamp-1">{med.name}</h3>
+                    <p className="text-[11px] text-slate-500">{med.brand} • {med.packSize}</p>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
+                  <div>
+                    <span className="text-base font-bold text-[#123B5D]">Rs. {med.price}</span>
+                    <span className="text-[11px] text-slate-400 line-through ml-1.5">Rs. {med.mrp}</span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      dispatch(addToCart(med));
+                      dispatch(showToast({ type: 'success', message: `${med.name} added to cart!` }));
+                    }}
+                    className="p-2 bg-[#18A999] hover:bg-[#128275] text-white rounded-xl transition-colors"
+                    title="Add to Cart"
+                  >
+                    <Pill className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Diagnostic Laboratory Tests */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
+          <div>
+            <span className="text-xs font-bold text-[#18A999] tracking-wider uppercase">Pathology Diagnostics</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#123B5D]">Book Pathology Lab Tests At Home</h2>
+          </div>
+          <Link to="/lab-tests" className="text-sm font-semibold text-[#18A999] hover:text-[#128275] flex items-center gap-1">
+            View All Lab Tests <ChevronRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {labTests.map((test) => (
+            <div key={test._id} className="bg-white rounded-2xl p-6 border border-slate-100 card-shadow space-y-4 flex flex-col justify-between">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold bg-[#E8F7F3] text-[#18A999] px-2 py-0.5 rounded">
+                    {test.category || 'Diagnostics'}
+                  </span>
+                  <span className="text-xs text-slate-400 flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5" /> {test.tatHours || 24} hrs report
+                  </span>
+                </div>
+                <h3 className="font-bold text-base text-[#123B5D]">{test.name}</h3>
+                <p className="text-xs text-slate-500 line-clamp-2">{test.description}</p>
+                <div className="text-[11px] text-slate-600 font-medium pt-1">
+                  Sample Type: <span className="text-slate-800 font-semibold">{test.sampleType || 'Blood'}</span>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span className="text-lg font-bold text-[#123B5D]">Rs. {test.price}</span>
+                  <span className="text-xs text-slate-400 line-through ml-1.5">Rs. {test.mrp}</span>
+                </div>
+                <Link
+                  to="/lab-tests"
+                  className="px-4 py-2 bg-[#123B5D] hover:bg-[#18A999] text-white text-xs font-semibold rounded-xl transition-colors"
+                >
+                  Book Test
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. How CareVanta AI Works */}
+      <section className="bg-gradient-to-r from-[#123B5D] to-[#247BA0] text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+          <div className="max-w-3xl mx-auto space-y-3">
+            <span className="text-xs font-bold text-[#E8F7F3] tracking-widest uppercase">Intelligent Workflow</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">How CareVanta AI Powers Your Healthcare</h2>
+            <p className="text-sm text-slate-200">From intelligent symptoms triaging to home sample collections and cryptographically signed electronic records.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-left space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#18A999] text-white font-bold flex items-center justify-center text-lg">1</div>
+              <h3 className="font-bold text-base text-white">AI Health Triage</h3>
+              <p className="text-xs text-slate-200">Input symptoms or upload past reports to receive clinical category recommendations.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-left space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#18A999] text-white font-bold flex items-center justify-center text-lg">2</div>
+              <h3 className="font-bold text-base text-white">Teleconsultation</h3>
+              <p className="text-xs text-slate-200">Attend HD WebRTC video consultations with certified specialists and receive e-prescriptions.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-left space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#18A999] text-white font-bold flex items-center justify-center text-lg">3</div>
+              <h3 className="font-bold text-base text-white">Lab & Pharmacy</h3>
+              <p className="text-xs text-slate-200">Order verified medications with prescription verification and book home phlebotomy sample pickups.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-left space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#18A999] text-white font-bold flex items-center justify-center text-lg">4</div>
+              <h3 className="font-bold text-base text-white">QR-Verified Records</h3>
+              <p className="text-xs text-slate-200">Download printable PDF reports and digital prescriptions secured with cryptographic verification QR codes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Verification CTA */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" /> Cryptographic Integrity
+            </div>
+            <h3 className="text-2xl font-bold text-[#123B5D]">Verify Any CareVanta Medical Document</h3>
+            <p className="text-xs text-slate-500 max-w-lg">
+              Every prescription, lab result, and consultation summary contains an official tamper-proof verification ID. Verify validity in one click without exposing private medical records.
+            </p>
+          </div>
+          <Link
+            to="/verify-report/CV-VERIFY-HEALTH99"
+            className="px-6 py-3.5 bg-[#123B5D] hover:bg-[#0c273e] text-white font-semibold text-xs rounded-xl shadow-lg shrink-0 flex items-center gap-2"
+          >
+            Launch Report Verifier <ArrowRight className="w-4 h-4 text-[#18A999]" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
