@@ -27,10 +27,10 @@ export default function AIHealthAssistant() {
   const [loadingChat, setLoadingChat] = useState(false);
 
   // Report analyzer state
-  const [reportText, setReportText] = useState('Hemoglobin: 11.2 g/dL (Normal: 13.0 - 17.0)
+  const [reportText, setReportText] = useState(`Hemoglobin: 11.2 g/dL (Normal: 13.0 - 17.0)
 Total Cholesterol: 242 mg/dL (Normal: < 200)
 Triglycerides: 198 mg/dL (Normal: < 150)
-Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)');
+Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [loadingAnalysis, setLoadingAnalysis] = useState(false);
 
