@@ -1,7 +1,7 @@
 {
-  "name": "medicare-ai",
+  "name": "medicare-helthcare-project",
   "version": "1.0.0",
-  "description": "AI-Powered All-in-One Digital Healthcare Ecosystem",
+  "description": "MediCare_Helthcare_Project - AI-Powered All-in-One Digital Healthcare Ecosystem",
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",

@@ -1,4 +1,4 @@
-# MediCare AI — AI-Powered All-in-One Digital Healthcare Ecosystem
+# MediCare_Helthcare_Project — MediCare AI Digital Healthcare Ecosystem
 > **Tagline:** *Your Health, Connected. Your Care, Intelligent.*
 
 [![MERN Stack](https://img.shields.io/badge/Stack-MERN-blue.svg)](https://reactjs.org/)
