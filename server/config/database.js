@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/carevanta-ai';
+    const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/medicare-ai';
     const conn = await mongoose.connect(uri, {
       serverSelectionTimeoutMS: 5000
     });

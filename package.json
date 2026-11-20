@@ -1,5 +1,5 @@
 {
-  "name": "carevanta-ai",
+  "name": "medicare-ai",
   "version": "1.0.0",
   "description": "AI-Powered All-in-One Digital Healthcare Ecosystem",
   "private": true,
@@ -12,6 +12,6 @@
     "seed": "cd server && node utils/seed.js"
   },
   "keywords": ["healthcare", "mern", "ai", "telemedicine"],
-  "author": "CareVanta AI",
+  "author": "MediCare AI",
   "license": "MIT"
 }

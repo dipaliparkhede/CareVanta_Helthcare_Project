@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * CareVanta AI Master PDF Engine
+ * MediCare AI Master PDF Engine
  * Generates professional clinical reports, digital prescriptions, lab results, and invoices
  */
 const generateReportPDF = async (reportData, outputPath) => {
@@ -25,7 +25,7 @@ const generateReportPDF = async (reportData, outputPath) => {
       doc.fillColor('#FFFFFF')
          .fontSize(22)
          .font('Helvetica-Bold')
-         .text('CAREVANTA AI', 45, 25);
+         .text('MEDICARE AI', 45, 25);
 
       doc.fontSize(10)
          .font('Helvetica')
@@ -67,7 +67,7 @@ const generateReportPDF = async (reportData, outputPath) => {
       doc.text(`Age / Gender: ${pat.age || '34'} Y / ${pat.gender || 'Not specified'}`, 50, 210);
       doc.text(`Blood Group: ${pat.bloodGroup || 'O+'}`, 50, 225);
 
-      const providerName = docDetails.user ? `Dr. ${docDetails.user.firstName} ${docDetails.user.lastName}` : (lab.name || 'CareVanta Diagnostics Center');
+      const providerName = docDetails.user ? `Dr. ${docDetails.user.firstName} ${docDetails.user.lastName}` : (lab.name || 'MediCare Diagnostics Center');
       const providerReg = docDetails.registrationNumber || lab.licenseNumber || 'REG-MH-2024-88910';
 
       doc.text(`Provider: ${providerName}`, 320, 180);
@@ -146,7 +146,7 @@ const generateReportPDF = async (reportData, outputPath) => {
       doc.text('OFFICIAL VERIFICATION CODE', 115, footerY + 12);
       doc.font('Helvetica').fillColor('#475569');
       doc.text(`Code: ${reportData.verificationCode || 'CV-VERIFY-10992'}`, 115, footerY + 24);
-      doc.text('Scan QR to verify authenticity or visit carevanta.ai/verify-report', 115, footerY + 36);
+      doc.text('Scan QR to verify authenticity or visit medicare.ai/verify-report', 115, footerY + 36);
 
       doc.font('Helvetica-Bold').fillColor('#123B5D');
       doc.text('AUTHORIZED MEDICAL SIGNATURE', doc.page.width - 240, footerY + 12);
@@ -156,7 +156,7 @@ const generateReportPDF = async (reportData, outputPath) => {
 
       // Final disclaimer
       doc.fontSize(7).fillColor('#94A3B8').text(
-        'Disclaimer: This electronic healthcare record is confidential and legally privileged. CareVanta AI complies with national teleconsultation guidelines and electronic health records specifications.',
+        'Disclaimer: This electronic healthcare record is confidential and legally privileged. MediCare AI complies with national teleconsultation guidelines and electronic health records specifications.',
         40, doc.page.height - 35, { align: 'center', width: doc.page.width - 80 }
       );
 

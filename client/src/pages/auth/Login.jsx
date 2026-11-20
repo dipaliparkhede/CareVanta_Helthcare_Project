@@ -48,7 +48,7 @@ export default function Login() {
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#123B5D] to-[#18A999] flex items-center justify-center mx-auto">
             <Heart className="w-5 h-5 text-white fill-white" />
           </div>
-          <h2 className="text-2xl font-bold text-[#123B5D]">Log in to CareVanta AI</h2>
+          <h2 className="text-2xl font-bold text-[#123B5D]">Log in to MediCare AI</h2>
           <p className="text-xs text-slate-500">Access your healthcare records, appointments & portals</p>
         </div>
 
@@ -56,12 +56,12 @@ export default function Login() {
         <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200 text-xs space-y-2">
           <p className="font-semibold text-slate-700 text-[11px] uppercase tracking-wider">Demo Quick Fill:</p>
           <div className="grid grid-cols-3 gap-1.5 text-[10px]">
-            <button type="button" onClick={() => setDemo('patient@carevanta.ai', 'Patient@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Patient</button>
-            <button type="button" onClick={() => setDemo('dr.sharma@carevanta.ai', 'Doctor@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Doctor</button>
-            <button type="button" onClick={() => setDemo('pharmacist@carevanta.ai', 'Pharmacy@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Pharmacy</button>
-            <button type="button" onClick={() => setDemo('lab@carevanta.ai', 'Lab@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Lab</button>
-            <button type="button" onClick={() => setDemo('hospital@carevanta.ai', 'Hospital@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Hospital</button>
-            <button type="button" onClick={() => setDemo('admin@carevanta.ai', 'Admin@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Admin</button>
+            <button type="button" onClick={() => setDemo('patient@medicare.ai', 'Patient@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Patient</button>
+            <button type="button" onClick={() => setDemo('dr.sharma@medicare.ai', 'Doctor@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Doctor</button>
+            <button type="button" onClick={() => setDemo('pharmacist@medicare.ai', 'Pharmacy@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Pharmacy</button>
+            <button type="button" onClick={() => setDemo('lab@medicare.ai', 'Lab@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Lab</button>
+            <button type="button" onClick={() => setDemo('hospital@medicare.ai', 'Hospital@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Hospital</button>
+            <button type="button" onClick={() => setDemo('admin@medicare.ai', 'Admin@Password123')} className="p-1 bg-white border border-slate-200 rounded font-semibold text-slate-700 hover:border-[#18A999]">Admin</button>
           </div>
         </div>
 
@@ -75,7 +75,7 @@ export default function Login() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="name@carevanta.ai"
+                placeholder="name@medicare.ai"
                 className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-[#18A999]"
               />
             </div>

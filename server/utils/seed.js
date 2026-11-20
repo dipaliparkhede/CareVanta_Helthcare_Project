@@ -16,9 +16,9 @@ const fs = require('fs');
 
 const seedData = async () => {
   try {
-    const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/carevanta-ai';
+    const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/medicare-ai';
     await mongoose.connect(uri);
-    console.log('🌱 Connected to MongoDB for CareVanta Ecosystem Seeding...');
+    console.log('🌱 Connected to MongoDB for MediCare Ecosystem Seeding...');
 
     // Clear existing
     await Promise.all([
@@ -40,7 +40,7 @@ const seedData = async () => {
     const adminUser = await User.create({
       firstName: 'Dipali',
       lastName: 'Parkhede',
-      email: 'admin@carevanta.ai',
+      email: 'admin@medicare.ai',
       password: 'Admin@Password123',
       phone: '+91 98201 12345',
       role: 'super_admin',
@@ -50,7 +50,7 @@ const seedData = async () => {
     const docUser1 = await User.create({
       firstName: 'Dr. Dipali',
       lastName: 'Parkhede',
-      email: 'dr.sharma@carevanta.ai',
+      email: 'dr.sharma@medicare.ai',
       password: 'Doctor@Password123',
       phone: '+91 98202 23456',
       role: 'doctor',
@@ -62,7 +62,7 @@ const seedData = async () => {
     const docUser2 = await User.create({
       firstName: 'Dr. Dipali',
       lastName: 'Parkhede',
-      email: 'dr.ananya@carevanta.ai',
+      email: 'dr.ananya@medicare.ai',
       password: 'Doctor@Password123',
       phone: '+91 98203 34567',
       role: 'doctor',
@@ -74,7 +74,7 @@ const seedData = async () => {
     const docUser3 = await User.create({
       firstName: 'Dr. Dipali',
       lastName: 'Parkhede',
-      email: 'dr.arjun@carevanta.ai',
+      email: 'dr.arjun@medicare.ai',
       password: 'Doctor@Password123',
       phone: '+91 98204 45678',
       role: 'doctor',
@@ -86,7 +86,7 @@ const seedData = async () => {
     const patientUser = await User.create({
       firstName: 'Dipali',
       lastName: 'Parkhede',
-      email: 'patient@carevanta.ai',
+      email: 'patient@medicare.ai',
       password: 'Patient@Password123',
       phone: '+91 98205 56789',
       role: 'patient',
@@ -98,7 +98,7 @@ const seedData = async () => {
     const pharmacistUser = await User.create({
       firstName: 'Dipali',
       lastName: 'Parkhede',
-      email: 'pharmacist@carevanta.ai',
+      email: 'pharmacist@medicare.ai',
       password: 'Pharmacy@Password123',
       phone: '+91 98206 67890',
       role: 'pharmacist',
@@ -108,7 +108,7 @@ const seedData = async () => {
     const labAdminUser = await User.create({
       firstName: 'Dr. Dipali',
       lastName: 'Parkhede',
-      email: 'lab@carevanta.ai',
+      email: 'lab@medicare.ai',
       password: 'Lab@Password123',
       phone: '+91 98207 78901',
       role: 'lab_admin',
@@ -118,7 +118,7 @@ const seedData = async () => {
     const hospitalAdminUser = await User.create({
       firstName: 'Dipali',
       lastName: 'Parkhede',
-      email: 'hospital@carevanta.ai',
+      email: 'hospital@medicare.ai',
       password: 'Hospital@Password123',
       phone: '+91 98208 89012',
       role: 'hospital_admin',
@@ -129,13 +129,13 @@ const seedData = async () => {
 
     // 2. Hospital
     const hospital = await Hospital.create({
-      name: 'CareVanta Dipali Parkhede Super Specialty Hospital',
+      name: 'MediCare Dipali Parkhede Super Specialty Hospital',
       adminUser: hospitalAdminUser._id,
       registrationNumber: 'HOSP-MAH-2024-001',
       type: 'Multi-Specialty',
       address: { street: 'Bandra Kurla Complex', city: 'Mumbai', state: 'Maharashtra', pincode: '400051' },
       phone: '+91 22 2650 1000',
-      email: 'hospital@carevanta.ai',
+      email: 'hospital@medicare.ai',
       bedCapacity: 350,
       availableBeds: 82,
       emergencyServices: true,
@@ -207,7 +207,7 @@ const seedData = async () => {
       gstNumber: '27AABCU9603R1ZM',
       address: { street: 'Andheri East', city: 'Mumbai', state: 'Maharashtra', pincode: '400069' },
       phone: '+91 22 2830 5500',
-      email: 'pharmacy@carevanta.ai',
+      email: 'pharmacy@medicare.ai',
       is24x7: true,
       rating: 4.8
     });
@@ -220,7 +220,7 @@ const seedData = async () => {
       nablAccredited: true,
       address: { street: 'Dadar West', city: 'Mumbai', state: 'Maharashtra', pincode: '400028' },
       phone: '+91 22 2430 7700',
-      email: 'lab@carevanta.ai',
+      email: 'lab@medicare.ai',
       homeSampleCollection: true,
       rating: 4.9
     });
@@ -445,7 +445,7 @@ const seedData = async () => {
     // 9. Health Packages
     const healthPackagesData = [
       {
-        name: 'CareVanta Full Body Master Health Checkup',
+        name: 'MediCare Full Body Master Health Checkup',
         code: 'PKG-MASTER-01',
         description: 'Our most comprehensive diagnostic panel covering 85+ parameters including heart, kidney, liver, thyroid, and vitamin markers.',
         targetAudience: 'Adults aged 25+ seeking annual preventive baseline',
@@ -458,7 +458,7 @@ const seedData = async () => {
         isPopular: true
       },
       {
-        name: 'CareVanta Advanced Cardiac Health Shield',
+        name: 'MediCare Advanced Cardiac Health Shield',
         code: 'PKG-CARDIAC-02',
         description: 'Specialized cardiac risk evaluation designed by expert cardiologists to detect asymptomatic heart disease risks early.',
         targetAudience: 'Individuals with hypertension, stress, or family history of heart disease',
@@ -520,12 +520,12 @@ const seedData = async () => {
       doctorComments: sampleReportData.doctorComments,
       verificationCode: sampleVerifyCode,
       pdfUrl: `/uploads/reports/${sampleReportNumber}.pdf`,
-      qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://carevanta.ai/verify-report/' + sampleVerifyCode)}`,
+      qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://medicare.ai/verify-report/' + sampleVerifyCode)}`,
       status: 'Finalized'
     });
 
     console.log('✅ Generated Sample PDF Clinical Report with verification QR code.');
-    console.log('🎉 CareVanta AI Database Seeding Completed Successfully!');
+    console.log('🎉 MediCare AI Database Seeding Completed Successfully!');
     process.exit(0);
   } catch (error) {
     console.error('❌ Seeding Error:', error);

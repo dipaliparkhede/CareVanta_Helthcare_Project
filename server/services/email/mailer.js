@@ -15,7 +15,7 @@ const sendEmail = async ({ to, subject, html, text }) => {
   try {
     const transporter = createTransporter();
     const info = await transporter.sendMail({
-      from: process.env.EMAIL_FROM || '"CareVanta AI Health" <no-reply@carevanta.ai>',
+      from: process.env.EMAIL_FROM || '"MediCare AI Health" <no-reply@medicare.ai>',
       to,
       subject,
       text,

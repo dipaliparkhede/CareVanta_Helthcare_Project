@@ -52,7 +52,7 @@ export default function Register() {
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#123B5D] to-[#18A999] flex items-center justify-center mx-auto">
             <Heart className="w-5 h-5 text-white fill-white" />
           </div>
-          <h2 className="text-2xl font-bold text-[#123B5D]">Create CareVanta Account</h2>
+          <h2 className="text-2xl font-bold text-[#123B5D]">Create MediCare Account</h2>
           <p className="text-xs text-slate-500">Join our connected digital healthcare ecosystem</p>
         </div>
 

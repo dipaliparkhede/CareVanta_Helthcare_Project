@@ -106,7 +106,7 @@ export default function DashboardLayout() {
             </div>
             <div>
               <span className="text-xl font-bold tracking-tight text-white">
-                Care<span className="text-[#18A999]">Vanta</span>
+                Medi<span className="text-[#18A999]">Care</span>
               </span>
               <span className="block text-[9px] text-[#E8F7F3] font-semibold tracking-wider uppercase">
                 {role.replace('_', ' ')} {t('workspace')}
@@ -158,7 +158,7 @@ export default function DashboardLayout() {
               </div>
               <div className="truncate">
                 <p className="text-xs font-semibold text-white truncate">{user?.firstName || 'Dipali'} {user?.lastName || 'Parkhede'}</p>
-                <p className="text-[10px] text-slate-400 truncate">{user?.email || 'dipali.parkhede@carevanta.ai'}</p>
+                <p className="text-[10px] text-slate-400 truncate">{user?.email || 'dipali.parkhede@medicare.ai'}</p>
               </div>
             </div>
             <button
@@ -182,7 +182,7 @@ export default function DashboardLayout() {
               <Menu className="w-5 h-5" />
             </button>
             <h1 className="text-base sm:text-lg font-bold text-[#123B5D]">
-              CareVanta Ecosystem Workspace
+              MediCare Ecosystem Workspace
             </h1>
           </div>
 

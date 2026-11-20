@@ -69,7 +69,7 @@ const createMedicalReport = asyncHandler(async (req, res) => {
     recommendations,
     verificationCode,
     pdfUrl: `/uploads/reports/${pdfFileName}`,
-    qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://carevanta.ai/verify-report/' + verificationCode)}`,
+    qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://medicare.ai/verify-report/' + verificationCode)}`,
     status: 'Finalized'
   });
 
@@ -122,7 +122,7 @@ const verifyReportByCode = asyncHandler(async (req, res) => {
       reportType: report.reportType,
       issuedDate: report.reportGenerationDate,
       patientInitials: `${report.patient?.firstName?.[0] || 'P'}*** ${report.patient?.lastName?.[0] || 'K'}***`,
-      issuingAuthority: report.doctor?.user ? `Dr. ${report.doctor.user.firstName} ${report.doctor.user.lastName}` : 'CareVanta Verified Diagnostics',
+      issuingAuthority: report.doctor?.user ? `Dr. ${report.doctor.user.firstName} ${report.doctor.user.lastName}` : 'MediCare Verified Diagnostics',
       digitalSignStatus: 'Cryptographically Verified (SHA-256)'
     }
   });

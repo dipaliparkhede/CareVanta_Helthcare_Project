@@ -26,10 +26,10 @@ export default function AIHealthAssistant() {
     {
       sender: 'ai',
       text: language === 'mr'
-        ? 'नमस्कार! मी केअरवांता एआय, तुमचा डिजिटल आरोग्य बुद्धिमत्ता सहाय्यक आहे. आज मी तुम्हाला क्लिनिकल व्याख्या किंवा वैद्यकीय प्रश्नांमध्ये कशी मदत करू शकतो?'
+        ? 'नमस्कार! मी मेडीकेअर एआय, तुमचा डिजिटल आरोग्य बुद्धिमत्ता सहाय्यक आहे. आज मी तुम्हाला क्लिनिकल व्याख्या किंवा वैद्यकीय प्रश्नांमध्ये कशी मदत करू शकतो?'
         : (language === 'hi' 
-            ? 'नमस्ते! मैं केयरवांता एआई, आपका डिजिटल स्वास्थ्य सहायक हूँ। आज मैं आपकी क्लिनिकल व्याख्या या स्वास्थ्य प्रश्नों में कैसे सहायता कर सकता हूँ?'
-            : 'Hello, I am CareVanta AI, your digital health intelligence assistant. How can I assist you with clinical explanations or medical wellness questions today?')
+            ? 'नमस्ते! मैं मेडिकेयर एआई, आपका डिजिटल स्वास्थ्य सहायक हूँ। आज मैं आपकी क्लिनिकल व्याख्या या स्वास्थ्य प्रश्नों में कैसे सहायता कर सकता हूँ?'
+            : 'Hello, I am MediCare AI, your digital health intelligence assistant. How can I assist you with clinical explanations or medical wellness questions today?')
     }
   ]);
   const [loadingChat, setLoadingChat] = useState(false);
@@ -287,7 +287,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
         <div className="bg-white rounded-3xl border border-slate-200 card-shadow flex flex-col h-[520px]">
           <div className="p-4 border-b border-slate-100 flex items-center gap-2">
             <Bot className="w-5 h-5 text-[#18A999]" />
-            <h3 className="font-bold text-xs text-[#123B5D]">CareVanta Medical Q&A Session</h3>
+            <h3 className="font-bold text-xs text-[#123B5D]">MediCare Medical Q&A Session</h3>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
@@ -306,7 +306,7 @@ Fasting Blood Sugar: 104 mg/dL (Normal: 70 - 100)`);
               </div>
             ))}
             {loadingChat && (
-              <div className="text-xs text-slate-400 italic">CareVanta AI is generating clinical response...</div>
+              <div className="text-xs text-slate-400 italic">MediCare AI is generating clinical response...</div>
             )}
           </div>
 

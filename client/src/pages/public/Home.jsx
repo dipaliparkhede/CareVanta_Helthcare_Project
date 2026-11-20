@@ -359,7 +359,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. How CareVanta AI Works */}
+      {/* 6. How MediCare AI Works */}
       <section className="bg-gradient-to-r from-[#123B5D] to-[#247BA0] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
           <div className="max-w-3xl mx-auto space-y-3">

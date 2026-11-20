@@ -1,4 +1,4 @@
-# CareVanta AI — REST API Architecture Documentation
+# MediCare AI — REST API Architecture Documentation
 
 Base URL: `http://localhost:5000/api`
 

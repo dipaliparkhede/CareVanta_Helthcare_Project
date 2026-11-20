@@ -1,7 +1,7 @@
 {
-  "name": "carevanta-server",
+  "name": "medicare-server",
   "version": "1.0.0",
-  "description": "CareVanta AI Backend REST API Server",
+  "description": "MediCare AI Backend REST API Server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

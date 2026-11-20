@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 let initialCart = [];
 try {
-  initialCart = JSON.parse(localStorage.getItem('carevanta_cart')) || [];
+  initialCart = JSON.parse(localStorage.getItem('medicare_cart')) || JSON.parse(localStorage.getItem('carevanta_cart')) || [];
 } catch (e) {
   initialCart = [];
 }
@@ -31,7 +31,7 @@ const cartSlice = createSlice({
       }
       const totals = calculateTotals(state.items);
       Object.assign(state, totals);
-      localStorage.setItem('carevanta_cart', JSON.stringify(state.items));
+      localStorage.setItem('medicare_cart', JSON.stringify(state.items));
     },
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
@@ -43,20 +43,20 @@ const cartSlice = createSlice({
       }
       const totals = calculateTotals(state.items);
       Object.assign(state, totals);
-      localStorage.setItem('carevanta_cart', JSON.stringify(state.items));
+      localStorage.setItem('medicare_cart', JSON.stringify(state.items));
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter(i => i._id !== action.payload);
       const totals = calculateTotals(state.items);
       Object.assign(state, totals);
-      localStorage.setItem('carevanta_cart', JSON.stringify(state.items));
+      localStorage.setItem('medicare_cart', JSON.stringify(state.items));
     },
     clearCart: (state) => {
       state.items = [];
       state.subtotal = 0;
       state.delivery = 0;
       state.grandTotal = 0;
-      localStorage.removeItem('carevanta_cart');
+      localStorage.removeItem('medicare_cart');
     }
   }
 });

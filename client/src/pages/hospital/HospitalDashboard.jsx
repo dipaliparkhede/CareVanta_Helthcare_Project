@@ -6,7 +6,7 @@ export default function HospitalDashboard() {
     <div className="space-y-6">
       <div className="bg-[#123B5D] text-white p-6 sm:p-8 rounded-3xl space-y-1">
         <span className="text-xs font-bold text-[#18A999] uppercase tracking-wider">Hospital Administration</span>
-        <h1 className="text-2xl font-bold text-white">CareVanta Dipali Parkhede Super Specialty Hospital</h1>
+        <h1 className="text-2xl font-bold text-white">MediCare Dipali Parkhede Super Specialty Hospital</h1>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

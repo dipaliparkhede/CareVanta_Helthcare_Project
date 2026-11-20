@@ -83,7 +83,7 @@ export default function Navbar() {
           </div>
           <div>
             <span className="text-2xl font-bold tracking-tight text-[#123B5D] font-sans">
-              Care<span className="text-[#18A999]">Vanta</span>
+              Medi<span className="text-[#18A999]">Care</span>
               <span className="ml-1 text-xs px-1.5 py-0.5 rounded font-semibold bg-[#E8F7F3] text-[#18A999] border border-[#18A999]/30">AI</span>
             </span>
             <p className="text-[10px] text-slate-400 font-medium tracking-wide leading-none">{t('intelligentHealthcare')}</p>

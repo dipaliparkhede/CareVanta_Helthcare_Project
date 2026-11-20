@@ -3,8 +3,8 @@ const crypto = require('crypto');
 
 const getRazorpayInstance = () => {
   return new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_CareVanta2026Key',
-    key_secret: process.env.RAZORPAY_KEY_SECRET || 'carevanta_razorpay_secret_sample'
+    key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_MediCare2026Key',
+    key_secret: process.env.RAZORPAY_KEY_SECRET || 'medicare_razorpay_secret_sample'
   });
 };
 
@@ -37,7 +37,7 @@ const verifyRazorpaySignature = ({ orderId, paymentId, signature }) => {
   if (orderId && orderId.startsWith('order_sim_')) {
     return true; // dev simulated orders
   }
-  const secret = process.env.RAZORPAY_KEY_SECRET || 'carevanta_razorpay_secret_sample';
+  const secret = process.env.RAZORPAY_KEY_SECRET || 'medicare_razorpay_secret_sample';
   const expectedSignature = crypto
     .createHmac('sha256', secret)
     .update(`${orderId}|${paymentId}`)

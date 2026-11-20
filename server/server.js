@@ -13,7 +13,7 @@ initSocket(server);
 connectDB().then(() => {
   server.listen(PORT, () => {
     console.log(`====================================================`);
-    console.log(`🏥 CAREVANTA AI — ALL-IN-ONE DIGITAL HEALTH ECOSYSTEM`);
+    console.log(`🏥 MEDICARE AI — ALL-IN-ONE DIGITAL HEALTH ECOSYSTEM`);
     console.log(`🚀 Server active on port: ${PORT}`);
     console.log(`🌐 Base URL: http://localhost:${PORT}/api`);
     console.log(`🩺 Socket.IO & WebRTC signaling ready`);

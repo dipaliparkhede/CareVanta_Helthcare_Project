@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialToken = localStorage.getItem('carevanta_token') || null;
+const initialToken = localStorage.getItem('medicare_token') || localStorage.getItem('carevanta_token') || null;
 let initialUser = null;
 try {
-  initialUser = JSON.parse(localStorage.getItem('carevanta_user')) || null;
+  initialUser = JSON.parse(localStorage.getItem('medicare_user')) || JSON.parse(localStorage.getItem('carevanta_user')) || null;
 } catch (e) {
   initialUser = null;
 }
@@ -24,19 +24,19 @@ const authSlice = createSlice({
       state.token = token;
       state.isAuthenticated = true;
       state.error = null;
-      localStorage.setItem('carevanta_token', token);
-      localStorage.setItem('carevanta_user', JSON.stringify(user));
+      localStorage.setItem('medicare_token', token);
+      localStorage.setItem('medicare_user', JSON.stringify(user));
     },
     logout: (state) => {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
-      localStorage.removeItem('carevanta_token');
-      localStorage.removeItem('carevanta_user');
+      localStorage.removeItem('medicare_token');
+      localStorage.removeItem('medicare_user');
     },
     updateUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };
-      localStorage.setItem('carevanta_user', JSON.stringify(state.user));
+      localStorage.setItem('medicare_user', JSON.stringify(state.user));
     }
   }
 });

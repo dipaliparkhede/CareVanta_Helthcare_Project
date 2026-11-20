@@ -2,13 +2,13 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
 const generateToken = (id, role) => {
-  return jwt.sign({ id, role }, process.env.JWT_SECRET || 'carevanta_super_secret_jwt_key_2026', {
+  return jwt.sign({ id, role }, process.env.JWT_SECRET || 'medicare_super_secret_jwt_key_2026', {
     expiresIn: process.env.JWT_EXPIRE || '1d'
   });
 };
 
 const generateRefreshToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_REFRESH_SECRET || 'carevanta_refresh_secret', {
+  return jwt.sign({ id }, process.env.JWT_REFRESH_SECRET || 'medicare_refresh_secret', {
     expiresIn: process.env.JWT_REFRESH_EXPIRE || '7d'
   });
 };

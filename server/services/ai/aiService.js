@@ -1,5 +1,5 @@
 /**
- * CareVanta AI Master Medical Intelligence Engine
+ * MediCare AI Master Medical Intelligence Engine
  * Handles Health Assistant Chatbot, Symptom Guidance, Report Analysis, OCR Reader, and Doctor Recommendations
  * Supports English, Hindi, and Marathi
  */
@@ -16,7 +16,7 @@ const getSymptomGuidance = async ({ symptoms, age, gender, durationDays, languag
       recommendedSpecialist: 'Emergency Medicine / Cardiology',
       emergencyActionNeeded: true,
       suggestedQuestions: ['Are you experiencing pain radiating to left arm or jaw?', 'Is there any difficulty breathing?'],
-      disclaimer: 'CareVanta AI does not provide emergency diagnosis. Immediate qualified clinician evaluation is required.'
+      disclaimer: 'MediCare AI does not provide emergency diagnosis. Immediate qualified clinician evaluation is required.'
     };
   }
 
@@ -66,7 +66,7 @@ const getSymptomGuidance = async ({ symptoms, age, gender, durationDays, languag
     selfCareTips: selfCare,
     localizedContent: translations[language] || null,
     emergencyActionNeeded: false,
-    disclaimer: 'CareVanta AI guidance is for informational and educational purposes only. It is not an autonomous medical diagnosis or treatment plan. Always consult a verified medical practitioner.'
+    disclaimer: 'MediCare AI guidance is for informational and educational purposes only. It is not an autonomous medical diagnosis or treatment plan. Always consult a verified medical practitioner.'
   };
 };
 
@@ -95,7 +95,7 @@ const answerHealthQuestion = async ({ query, conversationHistory = [], language 
   return {
     answer: responseText,
     suggestedTopics: ['Schedule Doctor Consultation', 'Book Preventative Health Package', 'Check Lab Tests'],
-    disclaimer: 'CareVanta AI does not prescribe medications autonomously.'
+    disclaimer: 'MediCare AI does not prescribe medications autonomously.'
   };
 };
 

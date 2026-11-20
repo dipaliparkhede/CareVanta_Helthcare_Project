@@ -38,7 +38,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.get('/api/health', (req, res) => {
   res.json({
     success: true,
-    platform: 'CareVanta AI Master Healthcare Ecosystem',
+    platform: 'MediCare AI Master Healthcare Ecosystem',
     status: 'ONLINE',
     timestamp: new Date().toISOString()
   });

@@ -17,7 +17,7 @@ export default function Footer() {
                 <Heart className="w-5 h-5 text-white fill-white" />
               </div>
               <span className="text-2xl font-bold text-white tracking-tight">
-                Care<span className="text-[#18A999]">Vanta</span> AI
+                Medi<span className="text-[#18A999]">Care</span> AI
               </span>
             </Link>
             <p className="text-sm text-slate-300 max-w-sm leading-relaxed">
@@ -74,7 +74,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#18A999] shrink-0" />
-                <span>care@carevanta.ai</span>
+                <span>care@medicare.ai</span>
               </p>
               <div className="pt-2">
                 <span className="block text-xs font-semibold text-red-400">AMBULANCE & TRAUMA: 112 / 108</span>

@@ -27,7 +27,7 @@ const createPrescription = asyncHandler(async (req, res) => {
     lifestyleAdvice,
     followUpDate,
     verificationCode,
-    qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://carevanta.ai/verify-prescription/' + verificationCode)}`
+    qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://medicare.ai/verify-prescription/' + verificationCode)}`
   });
 
   res.status(201).json({

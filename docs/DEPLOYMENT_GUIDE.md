@@ -1,4 +1,4 @@
-# CareVanta AI — Production Deployment Guide
+# MediCare AI — Production Deployment Guide
 
 ### Frontend Deployment (Vercel)
 1. Push codebase to GitHub/GitLab.
@@ -13,7 +13,7 @@
    - `NODE_ENV=production`
    - `PORT=5000`
    - `CLIENT_URL=https://your-frontend-domain.com`
-   - `MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/carevanta-ai`
+   - `MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/medicare-ai`
    - `JWT_SECRET=your_production_secret`
    - `RAZORPAY_KEY_ID=your_razorpay_id`
    - `RAZORPAY_KEY_SECRET=your_razorpay_secret`

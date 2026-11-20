@@ -5,10 +5,10 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'CareVanta AI - Master Healthcare Ecosystem API',
+      title: 'MediCare AI - Master Healthcare Ecosystem API',
       version: '1.0.0',
       description: 'Comprehensive REST APIs for Telemedicine, Pharmacy, Lab Diagnostics, Electronic Health Records, and AI Services',
-      contact: { name: 'CareVanta AI Engineering', email: 'support@carevanta.ai' }
+      contact: { name: 'MediCare AI Engineering', email: 'support@medicare.ai' }
     },
     servers: [{ url: 'http://localhost:5000/api', description: 'Development Server' }]
   },

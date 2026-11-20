@@ -34,7 +34,7 @@ export const translations = {
     verifiedPractitioners: "Verified Practitioners",
     instantVideoConsults: "Instant Video Consults",
     qrVerifiedReports: "QR-Verified PDF Reports",
-    aiTriageTitle: "CareVanta AI Health Assistant",
+    aiTriageTitle: "MediCare AI Health Assistant",
     aiTriageSubtitle: "Clinical Triaging & Terminology Helper",
     aiTriagePrompt: "What symptoms are you experiencing today?",
     aiTriageDescription: "I can guide you to the right clinical specialist, help explain abnormal blood biomarker values, or answer general medical questions in English, Hindi, or Marathi.",
@@ -103,7 +103,7 @@ export const translations = {
 
     // How it works
     howItWorksBadge: "Intelligent Workflow",
-    howItWorksTitle: "How CareVanta AI Powers Your Healthcare",
+    howItWorksTitle: "How MediCare AI Powers Your Healthcare",
     howItWorksSubtitle: "From intelligent symptoms triaging to home sample collections and cryptographically signed electronic records.",
     step1Title: "AI Health Triage",
     step1Desc: "Input symptoms or upload past reports to receive clinical category recommendations.",
@@ -116,12 +116,12 @@ export const translations = {
 
     // Verification CTA
     cryptoIntegrity: "Cryptographic Integrity",
-    verifyDocTitle: "Verify Any CareVanta Medical Document",
+    verifyDocTitle: "Verify Any MediCare Medical Document",
     verifyDocSubtitle: "Every prescription, lab result, and consultation summary contains an official tamper-proof verification ID. Verify validity in one click without exposing private medical records.",
     launchVerifier: "Launch Report Verifier",
 
     // AI Health Suite
-    aiSuiteTitle: "CareVanta AI Health Suite",
+    aiSuiteTitle: "MediCare AI Health Suite",
     aiSuiteSubtitle: "Intelligent symptom guidance, clinical terminology explanations, report analysis, and prescription OCR.",
     symptomTab: "Symptom Guidance",
     chatTab: "Health Q&A Assistant",
@@ -166,11 +166,11 @@ export const translations = {
     cancel: "Cancel",
 
     // Footer
-    footerMission: "CareVanta AI is an advanced, interconnected digital healthcare ecosystem uniting Patients, Doctors, Hospitals, Pharmacies, and Laboratories into an intelligent, patient-centric continuum of care.",
+    footerMission: "MediCare AI is an advanced, interconnected digital healthcare ecosystem uniting Patients, Doctors, Hospitals, Pharmacies, and Laboratories into an intelligent, patient-centric continuum of care.",
     quickLinks: "Healthcare Services",
     partnerPortals: "Partner Portals",
     contactSupport: "Emergency & Contact",
-    allRightsReserved: "CareVanta AI Technologies Private Limited. All rights reserved.",
+    allRightsReserved: "MediCare AI Technologies Private Limited. All rights reserved.",
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Clinical Service",
     medicalDisclaimer: "Medical AI Disclaimer"
@@ -211,7 +211,7 @@ export const translations = {
     verifiedPractitioners: "सत्यापित चिकित्सक",
     instantVideoConsults: "त्वरित वीडियो परामर्श",
     qrVerifiedReports: "क्यूआर-सत्यापित पीडीएफ रिपोर्ट",
-    aiTriageTitle: "केयरवांता एआई स्वास्थ्य सहायक",
+    aiTriageTitle: "मेडिकेयर एआई स्वास्थ्य सहायक",
     aiTriageSubtitle: "क्लिनिकल ट्रायजिंग और मेडिकल शब्दावली सहायक",
     aiTriagePrompt: "आज आप कौन से लक्षण महसूस कर रहे हैं?",
     aiTriageDescription: "मैं आपको सही विशेषज्ञ तक मार्गदर्शन कर सकता हूँ, असामान्य रक्त बायोमार्कर समझाने में मदद कर सकता हूँ या स्वास्थ्य प्रश्नों के उत्तर दे सकता हूँ।",
@@ -280,7 +280,7 @@ export const translations = {
 
     // How it works
     howItWorksBadge: "बुद्धिमान कार्यप्रणाली",
-    howItWorksTitle: "केयरवांता एआई आपकी स्वास्थ्य सेवा कैसे सरल बनाता है",
+    howItWorksTitle: "मेडिकेयर एआई आपकी स्वास्थ्य सेवा कैसे सरल बनाता है",
     howItWorksSubtitle: "लक्षणों की एआई ट्रायजिंग से लेकर घर पर सैंपल कलेक्शन और डिजिटल रिकॉर्ड तक।",
     step1Title: "एआई स्वास्थ्य ट्रायज",
     step1Desc: "लक्षण दर्ज करें या पुरानी रिपोर्ट अपलोड करके क्लिनिकल सिफारिशें प्राप्त करें।",
@@ -293,12 +293,12 @@ export const translations = {
 
     // Verification CTA
     cryptoIntegrity: "क्रिप्टोग्राफिक सुरक्षा",
-    verifyDocTitle: "किसी भी केयरवांता मेडिकल दस्तावेज़ को सत्यापित करें",
+    verifyDocTitle: "किसी भी मेडिकेयर मेडिकल दस्तावेज़ को सत्यापित करें",
     verifyDocSubtitle: "प्रत्येक नुस्खे और टेस्ट रिपोर्ट में आधिकारिक सत्यापन कोड होता है। गोपनीय विवरण सुरक्षित रखते हुए एक क्लिक में प्रामाणिकता जांचें।",
     launchVerifier: "सत्यापन पोर्टल खोलें",
 
     // AI Health Suite
-    aiSuiteTitle: "केयरवांता एआई स्वास्थ्य सेवा सूट",
+    aiSuiteTitle: "मेडिकेयर एआई स्वास्थ्य सेवा सूट",
     aiSuiteSubtitle: "लक्षण मार्गदर्शन, क्लिनिकल शब्दावली व्याख्या, रिपोर्ट विश्लेषण और प्रिस्क्रिप्शन ओसीआर।",
     symptomTab: "लक्षण मार्गदर्शन",
     chatTab: "स्वास्थ्य प्रश्नोत्तरी सहायक",
@@ -343,11 +343,11 @@ export const translations = {
     cancel: "रद्द करें",
 
     // Footer
-    footerMission: "केयरवांता एआई मरीजों, डॉक्टरों, अस्पतालों, फार्मेसियों और प्रयोगशालाओं को एक बुद्धिमान, मरीज-केंद्रित स्वास्थ्य सेवा में जोड़ने वाला उन्नत डिजिटल हेल्थ प्लेटफॉर्म है।",
+    footerMission: "मेडिकेयर एआई मरीजों, डॉक्टरों, अस्पतालों, फार्मेसियों और प्रयोगशालाओं को एक बुद्धिमान, मरीज-केंद्रित स्वास्थ्य सेवा में जोड़ने वाला उन्नत डिजिटल हेल्थ प्लेटफॉर्म है।",
     quickLinks: "स्वास्थ्य सेवाएं",
     partnerPortals: "पार्टनर पोर्टल",
     contactSupport: "आपातकालीन एवं संपर्क",
-    allRightsReserved: "केयरवांता एआई टेक्नोलॉजीज प्राइवेट लिमिटेड। सर्वाधिकार सुरक्षित।",
+    allRightsReserved: "मेडिकेयर एआई टेक्नोलॉजीज प्राइवेट लिमिटेड। सर्वाधिकार सुरक्षित।",
     privacyPolicy: "गोपनीयता नीति",
     termsOfService: "सेवा की शर्तें",
     medicalDisclaimer: "चिकित्सा एआई अस्वीकरण"
@@ -388,7 +388,7 @@ export const translations = {
     verifiedPractitioners: "सत्यापित वैद्यकीय तज्ज्ञ",
     instantVideoConsults: "त्वरित व्हिडिओ सल्लामसलत",
     qrVerifiedReports: "क्यूआर-सत्यापित पीडीएफ अहवाल",
-    aiTriageTitle: "केअरवांता एआय आरोग्य सहाय्यक",
+    aiTriageTitle: "मेडीकेअर एआय आरोग्य सहाय्यक",
     aiTriageSubtitle: "क्लिनिकल ट्रायजिंग आणि वैद्यकीय संज्ञा सहाय्यक",
     aiTriagePrompt: "आज तुम्हाला कोणती लक्षणे जाणवत आहेत?",
     aiTriageDescription: "मी तुम्हाला योग्य तज्ज्ञ डॉक्टरांकडे मार्गदर्शन करू शकतो, रक्त तपासणीतील असामान्य घटक समजावून सांगू शकतो किंवा आरोग्याविषयी प्रश्नांची उत्तरे देऊ शकतो.",
@@ -457,7 +457,7 @@ export const translations = {
 
     // How it works
     howItWorksBadge: "बुद्धिमान कार्यपद्धती",
-    howItWorksTitle: "केअरवांता एआय तुमची आरोग्य सेवा कशी सोपी करते",
+    howItWorksTitle: "मेडीकेअर एआय तुमची आरोग्य सेवा कशी सोपी करते",
     howItWorksSubtitle: "लक्षणांच्या एआय ट्रायजिंगपासून ते घरी नमुना संकलन आणि डिजिटल वैद्यकीय अहवालांपर्यंत.",
     step1Title: "एआय आरोग्य ट्रायज",
     step1Desc: "लक्षणे प्रविष्ट करा किंवा जुने अहवाल अपलोड करून क्लिनिकल मार्गदर्शन मिळवा.",
@@ -470,12 +470,12 @@ export const translations = {
 
     // Verification CTA
     cryptoIntegrity: "क्रिप्टोग्राफिक सुरक्षितता",
-    verifyDocTitle: "कोणताही केअरवांता वैद्यकीय दस्तऐवज सत्यापित करा",
+    verifyDocTitle: "कोणताही मेडीकेअर वैद्यकीय दस्तऐवज सत्यापित करा",
     verifyDocSubtitle: "प्रत्येक प्रिस्क्रिप्शन आणि लॅब अहवालात अधिकृत पडताळणी कोड असतो. गोपनीय माहिती सुरक्षित ठेवून एका क्लिकवर अस्सलपणा तपासा.",
     launchVerifier: "पडताळणी पोर्टल उघडा",
 
     // AI Health Suite
-    aiSuiteTitle: "केअरवांता एआय आरोग्य सेवा संच",
+    aiSuiteTitle: "मेडीकेअर एआय आरोग्य सेवा संच",
     aiSuiteSubtitle: "लक्षण मार्गदर्शन, क्लिनिकल व्याख्या, वैद्यकीय अहवाल विश्लेषण आणि प्रिस्क्रिप्शन ओसीआर.",
     symptomTab: "लक्षण मार्गदर्शन",
     chatTab: "आरोग्य प्रश्नोत्तरे सहाय्यक",
@@ -520,11 +520,11 @@ export const translations = {
     cancel: "रद्द करा",
 
     // Footer
-    footerMission: "केअरवांता एआय ही रुग्ण, डॉक्टर, रुग्णालये, औषधालये आणि निदान प्रयोगशाळांना एका बुद्धिमान आरोग्य सेवेत जोडणारी प्रगत डिजिटल प्रणाली आहे.",
+    footerMission: "मेडीकेअर एआय ही रुग्ण, डॉक्टर, रुग्णालये, औषधालये आणि निदान प्रयोगशाळांना एका बुद्धिमान आरोग्य सेवेत जोडणारी प्रगत डिजिटल प्रणाली आहे.",
     quickLinks: "आरोग्य सेवा",
     partnerPortals: "भागीदार पोर्टल्स",
     contactSupport: "आपत्कालीन आणि संपर्क",
-    allRightsReserved: "केअरवांता एआय टेक्नॉलॉजीज प्रायव्हेट लिमिटेड. सर्व हक्क राखीव.",
+    allRightsReserved: "मेडीकेअर एआय टेक्नॉलॉजीज प्रायव्हेट लिमिटेड. सर्व हक्क राखीव.",
     privacyPolicy: "गोपनीयता धोरण",
     termsOfService: "सेवा अटी",
     medicalDisclaimer: "वैद्यकीय एआय अस्वीकरण"

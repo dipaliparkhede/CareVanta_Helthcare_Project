@@ -9,7 +9,7 @@ const API = axios.create({
 
 // Request interceptor to attach JWT token
 API.interceptors.request.use((config) => {
-  const token = localStorage.getItem('carevanta_token');
+  const token = localStorage.getItem('medicare_token') || localStorage.getItem('carevanta_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -27,6 +27,8 @@ API.interceptors.response.use(
           window.location.pathname.startsWith('/pharmacy') ||
           window.location.pathname.startsWith('/lab') ||
           window.location.pathname.startsWith('/hospital')) {
+        localStorage.removeItem('medicare_token');
+        localStorage.removeItem('medicare_user');
         localStorage.removeItem('carevanta_token');
         localStorage.removeItem('carevanta_user');
         window.location.href = '/login?expired=true';

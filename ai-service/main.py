@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 app = FastAPI(
-    title="CareVanta AI Medical Intelligence Service",
+    title="MediCare AI Medical Intelligence Service",
     description="Specialized clinical triaging, report comprehension, and multilingual healthcare AI engine",
     version="1.0.0"
 )
@@ -32,7 +32,7 @@ class ReportRequest(BaseModel):
 def health_check():
     return {
         "status": "ONLINE",
-        "service": "CareVanta AI Clinical Microservice",
+        "service": "MediCare AI Clinical Microservice",
         "supported_languages": ["en", "hi", "mr"]
     }
 

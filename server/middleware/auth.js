@@ -14,7 +14,7 @@ const protect = async (req, res, next) => {
       return res.status(401).json({ success: false, message: 'Authentication required. Please log in.' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'carevanta_super_secret_jwt_key_2026');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'medicare_super_secret_jwt_key_2026');
     const user = await User.findById(decoded.id).select('-password');
     if (!user) {
       return res.status(401).json({ success: false, message: 'User not found or session expired.' });
@@ -49,7 +49,7 @@ const optionalAuth = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
     }
     if (token) {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'carevanta_super_secret_jwt_key_2026');
+      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'medicare_super_secret_jwt_key_2026');
       req.user = await User.findById(decoded.id).select('-password');
     }
   } catch (err) {

@@ -1,4 +1,4 @@
-# CareVanta AI — AI-Powered All-in-One Digital Healthcare Ecosystem
+# MediCare AI — AI-Powered All-in-One Digital Healthcare Ecosystem
 > **Tagline:** *Your Health, Connected. Your Care, Intelligent.*
 
 [![MERN Stack](https://img.shields.io/badge/Stack-MERN-blue.svg)](https://reactjs.org/)
@@ -10,9 +10,9 @@
 
 ## 🏥 Executive Overview
 
-**CareVanta AI** is a production-grade, end-to-end digital healthcare ecosystem connecting **Patients, Doctors, Hospitals, Pharmacies, Diagnostic Laboratories, and Super Administrators** into an intelligent continuum of care. 
+**MediCare AI** is a production-grade, end-to-end digital healthcare ecosystem connecting **Patients, Doctors, Hospitals, Pharmacies, Diagnostic Laboratories, and Super Administrators** into an intelligent continuum of care. 
 
-Rather than a simple hospital website or doctor appointment directory, CareVanta AI delivers a unified health platform with:
+Rather than a simple hospital website or doctor appointment directory, MediCare AI delivers a unified health platform with:
 - **Telemedicine & WebRTC HD Consultations** with active doctor notes and real-time chat
 - **Digital Prescription Generator** with clinical diagnosis, dosage schedules, and QR code verification
 - **Master Online Medical Report Engine** generating downloadable, printable PDFs for 27 clinical report types with cryptographic SHA-256 validation
@@ -26,7 +26,7 @@ Rather than a simple hospital website or doctor appointment directory, CareVanta
 
 ## 🎨 Professional Design System
 
-CareVanta AI features an international healthcare SaaS interface designed according to clinical human-factors engineering:
+MediCare AI features an international healthcare SaaS interface designed according to clinical human-factors engineering:
 
 | Role / Element | Palette Hex | Visual Role |
 | :--- | :--- | :--- |
@@ -45,7 +45,7 @@ CareVanta AI features an international healthcare SaaS interface designed accord
 
 ```
                                   +-------------------------------------------------------+
-                                  |                 CareVanta AI Frontend                 |
+                                  |                 MediCare AI Frontend                 |
                                   |             React 18 + Vite + Tailwind CSS            |
                                   |             Redux Toolkit + React Router v6           |
                                   +---------------------------+---------------------------+
@@ -53,7 +53,7 @@ CareVanta AI features an international healthcare SaaS interface designed accord
                                                     REST / WebRTC / Socket.IO
                                                               |
                                   +---------------------------v---------------------------+
-                                  |              CareVanta Core Backend API               |
+                                  |              MediCare Core Backend API               |
                                   |            Node.js + Express + Socket.IO              |
                                   +-------+-------------------+-------------------+-------+
                                           |                   |                   |
@@ -75,13 +75,13 @@ The database includes realistic demo accounts across all 6 roles for rapid testi
 
 | Role / User | Email | Password | Access Highlights |
 | :--- | :--- | :--- | :--- |
-| **Super Admin (Dipali Parkhede)** | `admin@carevanta.ai` | `Admin@Password123` | Ecosystem revenue charts, audit logs, provider approvals |
-| **Doctor (Dr. Dipali Parkhede - Cardiologist)** | `dr.sharma@carevanta.ai` | `Doctor@Password123` | Patient queue, video rooms, issue prescriptions |
-| **Doctor (Dr. Dipali Parkhede - Neurologist)** | `dr.ananya@carevanta.ai` | `Doctor@Password123` | Availability management, earnings analytics |
-| **Patient (Dipali Parkhede)** | `patient@carevanta.ai` | `Patient@Password123` | EHR dashboard, medical locker, appointments, pharmacy orders |
-| **Pharmacist (Dipali Parkhede)** | `pharmacist@carevanta.ai` | `Pharmacy@Password123` | Prescription verification queue, inventory dispatch |
-| **Laboratory Admin (Dipali Parkhede)** | `lab@carevanta.ai` | `Lab@Password123` | Sample collection status, publish finalized PDF reports |
-| **Hospital Admin (Dipali Parkhede)** | `hospital@carevanta.ai` | `Hospital@Password123` | Bed capacities, department rosters, admission management |
+| **Super Admin (Dipali Parkhede)** | `admin@medicare.ai` | `Admin@Password123` | Ecosystem revenue charts, audit logs, provider approvals |
+| **Doctor (Dr. Dipali Parkhede - Cardiologist)** | `dr.sharma@medicare.ai` | `Doctor@Password123` | Patient queue, video rooms, issue prescriptions |
+| **Doctor (Dr. Dipali Parkhede - Neurologist)** | `dr.ananya@medicare.ai` | `Doctor@Password123` | Availability management, earnings analytics |
+| **Patient (Dipali Parkhede)** | `patient@medicare.ai` | `Patient@Password123` | EHR dashboard, medical locker, appointments, pharmacy orders |
+| **Pharmacist (Dipali Parkhede)** | `pharmacist@medicare.ai` | `Pharmacy@Password123` | Prescription verification queue, inventory dispatch |
+| **Laboratory Admin (Dipali Parkhede)** | `lab@medicare.ai` | `Lab@Password123` | Sample collection status, publish finalized PDF reports |
+| **Hospital Admin (Dipali Parkhede)** | `hospital@medicare.ai` | `Hospital@Password123` | Bed capacities, department rosters, admission management |
 
 ---
 
@@ -160,5 +160,5 @@ python main.py        # Starts FastAPI AI engine on http://localhost:8000
 
 ## 📄 License & Compliance
 
-CareVanta AI is released under the **MIT License**.
+MediCare AI is released under the **MIT License**.
 Compliant with national telemedicine practice guidelines, statutory pharmacy dispensing regulations, and digital personal data protection principles.
