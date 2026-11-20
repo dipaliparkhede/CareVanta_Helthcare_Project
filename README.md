@@ -73,15 +73,15 @@ CareVanta AI features an international healthcare SaaS interface designed accord
 
 The database includes realistic demo accounts across all 6 roles for rapid testing:
 
-| Role | Email | Password | Access Highlights |
+| Role / User | Email | Password | Access Highlights |
 | :--- | :--- | :--- | :--- |
-| **Super Admin** | `admin@carevanta.ai` | `Admin@Password123` | Ecosystem revenue charts, audit logs, provider approvals |
-| **Doctor (Cardiologist)** | `dr.sharma@carevanta.ai` | `Doctor@Password123` | Patient queue, video rooms, issue prescriptions |
-| **Doctor (Neurologist)** | `dr.ananya@carevanta.ai` | `Doctor@Password123` | Availability management, earnings analytics |
-| **Patient** | `patient@carevanta.ai` | `Patient@Password123` | EHR dashboard, medical locker, appointments, pharmacy orders |
-| **Pharmacist** | `pharmacist@carevanta.ai` | `Pharmacy@Password123` | Prescription verification queue, inventory dispatch |
-| **Laboratory Admin** | `lab@carevanta.ai` | `Lab@Password123` | Sample collection status, publish finalized PDF reports |
-| **Hospital Admin** | `hospital@carevanta.ai` | `Hospital@Password123` | Bed capacities, department rosters, admission management |
+| **Super Admin (Dipali Parkhede)** | `admin@carevanta.ai` | `Admin@Password123` | Ecosystem revenue charts, audit logs, provider approvals |
+| **Doctor (Dr. Dipali Parkhede - Cardiologist)** | `dr.sharma@carevanta.ai` | `Doctor@Password123` | Patient queue, video rooms, issue prescriptions |
+| **Doctor (Dr. Dipali Parkhede - Neurologist)** | `dr.ananya@carevanta.ai` | `Doctor@Password123` | Availability management, earnings analytics |
+| **Patient (Dipali Parkhede)** | `patient@carevanta.ai` | `Patient@Password123` | EHR dashboard, medical locker, appointments, pharmacy orders |
+| **Pharmacist (Dipali Parkhede)** | `pharmacist@carevanta.ai` | `Pharmacy@Password123` | Prescription verification queue, inventory dispatch |
+| **Laboratory Admin (Dipali Parkhede)** | `lab@carevanta.ai` | `Lab@Password123` | Sample collection status, publish finalized PDF reports |
+| **Hospital Admin (Dipali Parkhede)** | `hospital@carevanta.ai` | `Hospital@Password123` | Bed capacities, department rosters, admission management |
 
 ---
 

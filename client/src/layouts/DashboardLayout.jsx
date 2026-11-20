@@ -154,11 +154,11 @@ export default function DashboardLayout() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5 min-w-0">
               <div className="w-9 h-9 rounded-full bg-[#18A999] text-white font-bold flex items-center justify-center shrink-0">
-                {user?.firstName?.[0] || 'U'}
+                {user?.firstName?.[0] || 'D'}
               </div>
               <div className="truncate">
-                <p className="text-xs font-semibold text-white truncate">{user?.firstName} {user?.lastName}</p>
-                <p className="text-[10px] text-slate-400 truncate">{user?.email}</p>
+                <p className="text-xs font-semibold text-white truncate">{user?.firstName || 'Dipali'} {user?.lastName || 'Parkhede'}</p>
+                <p className="text-[10px] text-slate-400 truncate">{user?.email || 'dipali.parkhede@carevanta.ai'}</p>
               </div>
             </div>
             <button

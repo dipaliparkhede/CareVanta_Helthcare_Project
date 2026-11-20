@@ -7,13 +7,13 @@ export default function VideoConsultation() {
   const [chatOpen, setChatOpen] = useState(true);
   const [chatMessage, setChatMessage] = useState('');
   const [chatLogs, setChatLogs] = useState([
-    { sender: 'Dr. Rajesh Sharma', text: 'Hello Rohan, I have reviewed your baseline complete blood count reports. How are you feeling today?' }
+    { sender: 'Dr. Dipali Parkhede', text: 'Hello Dipali, I have reviewed your baseline complete blood count reports. How are you feeling today?' }
   ]);
 
   const handleSendChat = (e) => {
     e.preventDefault();
     if (!chatMessage.trim()) return;
-    setChatLogs([...chatLogs, { sender: 'You', text: chatMessage }]);
+    setChatLogs([...chatLogs, { sender: 'Dipali Parkhede', text: chatMessage }]);
     setChatMessage('');
   };
 
@@ -25,7 +25,7 @@ export default function VideoConsultation() {
         <div className="flex items-center justify-between z-10">
           <div className="bg-slate-800/80 backdrop-blur-md px-4 py-2 rounded-xl text-white text-xs flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-semibold">Teleconsultation: Dr. Rajesh Sharma (Cardiology)</span>
+            <span className="font-semibold">Teleconsultation: Dr. Dipali Parkhede (Cardiology)</span>
           </div>
           <span className="bg-red-600/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
             Encrypted WebRTC
@@ -37,11 +37,11 @@ export default function VideoConsultation() {
           {videoOn ? (
             <div className="text-center space-y-3">
               <img
-                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800"
+                src="https://images.unsplash.com/photo-1594824813575-f538e124d9c7?w=800"
                 alt="Doctor Feed"
                 className="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover border-4 border-[#18A999] mx-auto shadow-2xl"
               />
-              <p className="text-white text-sm font-semibold">Dr. Rajesh Sharma is presenting</p>
+              <p className="text-white text-sm font-semibold">Dr. Dipali Parkhede is presenting</p>
             </div>
           ) : (
             <div className="text-slate-500 text-xs">Camera paused</div>
@@ -52,7 +52,7 @@ export default function VideoConsultation() {
         <div className="absolute bottom-24 right-6 w-32 h-24 bg-slate-800 rounded-2xl border-2 border-white/20 overflow-hidden flex items-center justify-center text-white text-xs shadow-lg">
           <div className="text-center">
             <User className="w-6 h-6 text-slate-400 mx-auto" />
-            <span className="text-[10px] text-slate-300">You</span>
+            <span className="text-[10px] text-slate-300">Dipali Parkhede</span>
           </div>
         </div>
 

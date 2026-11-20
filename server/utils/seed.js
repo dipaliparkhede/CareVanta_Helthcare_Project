@@ -38,8 +38,8 @@ const seedData = async () => {
 
     // 1. Users for all 6 roles
     const adminUser = await User.create({
-      firstName: 'Vikram',
-      lastName: 'Mehta',
+      firstName: 'Dipali',
+      lastName: 'Parkhede',
       email: 'admin@carevanta.ai',
       password: 'Admin@Password123',
       phone: '+91 98201 12345',
@@ -48,56 +48,56 @@ const seedData = async () => {
     });
 
     const docUser1 = await User.create({
-      firstName: 'Dr. Rajesh',
-      lastName: 'Sharma',
+      firstName: 'Dr. Dipali',
+      lastName: 'Parkhede',
       email: 'dr.sharma@carevanta.ai',
       password: 'Doctor@Password123',
       phone: '+91 98202 23456',
-      role: 'doctor',
-      gender: 'Male',
-      avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400',
-      isVerified: true
-    });
-
-    const docUser2 = await User.create({
-      firstName: 'Dr. Ananya',
-      lastName: 'Deshmukh',
-      email: 'dr.ananya@carevanta.ai',
-      password: 'Doctor@Password123',
-      phone: '+91 98203 34567',
       role: 'doctor',
       gender: 'Female',
       avatar: 'https://images.unsplash.com/photo-1594824813575-f538e124d9c7?w=400',
       isVerified: true
     });
 
+    const docUser2 = await User.create({
+      firstName: 'Dr. Dipali',
+      lastName: 'Parkhede',
+      email: 'dr.ananya@carevanta.ai',
+      password: 'Doctor@Password123',
+      phone: '+91 98203 34567',
+      role: 'doctor',
+      gender: 'Female',
+      avatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400',
+      isVerified: true
+    });
+
     const docUser3 = await User.create({
-      firstName: 'Dr. Arjun',
-      lastName: 'Verma',
+      firstName: 'Dr. Dipali',
+      lastName: 'Parkhede',
       email: 'dr.arjun@carevanta.ai',
       password: 'Doctor@Password123',
       phone: '+91 98204 45678',
       role: 'doctor',
-      gender: 'Male',
-      avatar: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400',
+      gender: 'Female',
+      avatar: 'https://images.unsplash.com/photo-1594824813575-f538e124d9c7?w=400',
       isVerified: true
     });
 
     const patientUser = await User.create({
-      firstName: 'Rohan',
-      lastName: 'Kulkarni',
+      firstName: 'Dipali',
+      lastName: 'Parkhede',
       email: 'patient@carevanta.ai',
       password: 'Patient@Password123',
       phone: '+91 98205 56789',
       role: 'patient',
-      gender: 'Male',
+      gender: 'Female',
       bloodGroup: 'B+',
       isVerified: true
     });
 
     const pharmacistUser = await User.create({
-      firstName: 'Sunil',
-      lastName: 'Patel',
+      firstName: 'Dipali',
+      lastName: 'Parkhede',
       email: 'pharmacist@carevanta.ai',
       password: 'Pharmacy@Password123',
       phone: '+91 98206 67890',
@@ -106,8 +106,8 @@ const seedData = async () => {
     });
 
     const labAdminUser = await User.create({
-      firstName: 'Dr. Neha',
-      lastName: 'Joshi',
+      firstName: 'Dr. Dipali',
+      lastName: 'Parkhede',
       email: 'lab@carevanta.ai',
       password: 'Lab@Password123',
       phone: '+91 98207 78901',
@@ -116,8 +116,8 @@ const seedData = async () => {
     });
 
     const hospitalAdminUser = await User.create({
-      firstName: 'Suresh',
-      lastName: 'Nair',
+      firstName: 'Dipali',
+      lastName: 'Parkhede',
       email: 'hospital@carevanta.ai',
       password: 'Hospital@Password123',
       phone: '+91 98208 89012',
@@ -129,7 +129,7 @@ const seedData = async () => {
 
     // 2. Hospital
     const hospital = await Hospital.create({
-      name: 'CareVanta Apollo Super Specialty Hospital',
+      name: 'CareVanta Dipali Parkhede Super Specialty Hospital',
       adminUser: hospitalAdminUser._id,
       registrationNumber: 'HOSP-MAH-2024-001',
       type: 'Multi-Specialty',
@@ -201,7 +201,7 @@ const seedData = async () => {
 
     // 4. Pharmacy
     const pharmacy = await Pharmacy.create({
-      name: 'CareVanta Express Digital Pharmacy',
+      name: 'Dipali Parkhede Express Digital Pharmacy',
       adminUser: pharmacistUser._id,
       licenseNumber: 'PHARM-DL-2024-44102',
       gstNumber: '27AABCU9603R1ZM',
@@ -214,7 +214,7 @@ const seedData = async () => {
 
     // 5. Laboratory
     const lab = await Laboratory.create({
-      name: 'CareVanta Precision PathLabs & Diagnostics',
+      name: 'Dipali Parkhede Precision PathLabs & Diagnostics',
       adminUser: labAdminUser._id,
       licenseNumber: 'LAB-NABL-2024-1188',
       nablAccredited: true,
@@ -492,7 +492,7 @@ const seedData = async () => {
         bloodGroup: patientUser.bloodGroup,
         _id: patientUser._id
       },
-      doctor: { user: { firstName: 'Rajesh', lastName: 'Sharma' }, registrationNumber: 'MCI-CARD-89102' },
+      doctor: { user: { firstName: 'Dipali', lastName: 'Parkhede' }, registrationNumber: 'MCI-CARD-89102' },
       laboratory: lab,
       parameters: [
         { parameterName: 'Hemoglobin', measuredValue: '14.8', unit: 'g/dL', referenceRange: '13.0 - 17.0', interpretation: 'Normal' },

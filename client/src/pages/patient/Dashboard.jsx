@@ -30,7 +30,7 @@ export default function PatientDashboard() {
             <Heart className="w-3.5 h-3.5 text-[#18A999]" /> {t('activeEHR')}
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
-            {t('welcomeBack')} {user?.firstName} {user?.lastName}
+            {t('welcomeBack')} {user?.firstName || 'Dipali'} {user?.lastName || 'Parkhede'}
           </h1>
           <p className="text-xs text-slate-200">
             {t('bloodGroup')} <span className="font-bold text-white">{user?.bloodGroup || 'B+'}</span> | {t('patientID')} <span className="font-mono text-white">CV-PAT-9081</span>

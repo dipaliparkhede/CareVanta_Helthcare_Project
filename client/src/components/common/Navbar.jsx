@@ -141,7 +141,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#123B5D] text-white font-medium text-sm hover:bg-[#0c273e] shadow-sm transition-all"
               >
                 <User className="w-4 h-4 text-[#18A999]" />
-                <span>{user?.firstName || t('dashboard')}</span>
+                <span>{user?.firstName || 'Dipali'}</span>
                 <span className="text-[10px] bg-[#18A999] text-white px-1.5 py-0.5 rounded font-semibold capitalize">
                   {user?.role?.replace('_', ' ')}
                 </span>
